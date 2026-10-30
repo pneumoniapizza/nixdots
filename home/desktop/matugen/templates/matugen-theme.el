@@ -77,6 +77,14 @@
    `(lsp-face-semhl-static ((t (:slant italic))))
    `(lsp-face-semhl-deprecated ((t (:strike-through t))))
 
+   ;; --- corfu completion popup ---
+   `(corfu-default ((t (:background ,surface-container :foreground ,fg))))
+   `(corfu-current ((t (:background ,primary-container :foreground ,on-primary-container :weight bold))))
+   `(corfu-bar ((t (:background ,primary))))
+   `(corfu-border ((t (:background ,primary))))
+   `(corfu-popupinfo ((t (:inherit corfu-default))))
+   `(completions-annotations ((t (:foreground ,outline :slant italic))))
+
    ;; --- eglot semantic token faces (if you switch clients later) ---
    `(eglot-highlight-symbol-face ((t (:background ,secondary-container))))))
 

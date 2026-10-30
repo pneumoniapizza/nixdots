@@ -359,6 +359,7 @@
   (corfu-auto-delay 0.2)
   (corfu-auto-prefix 2)
   (corfu-cycle t)
+  (corfu-preselect 'first) ; first candidate is highlighted, so RET accepts it
   :hook (after-init . global-corfu-mode)
   :config
   (corfu-popupinfo-mode 1))
@@ -367,14 +368,28 @@
 (use-package cape
   :init
   (add-hook 'completion-at-point-functions #'cape-file)
-  (add-hook 'completion-at-point-functions #'cape-dabbrev))
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  ;; Language keywords, so every mode with a major mode gets a popup even
+  ;; without an LSP server.
+  (add-hook 'completion-at-point-functions #'cape-keyword))
+
+;; Eglot's completion source normally hides all others in LSP buffers, so
+;; merge it with keywords and words from the buffer into one popup.
+(defun ab/eglot-merged-capf ()
+  "Show LSP, keyword and buffer-word candidates together in this buffer."
+  (setq-local completion-at-point-functions
+              (list (cape-capf-super #'eglot-completion-at-point
+                                     #'cape-keyword
+                                     #'cape-dabbrev)
+                    #'cape-file)))
 
 (use-package eglot
   :straight nil
   :custom (eglot-autoshutdown t)
-  :hook ((c-mode c++-mode zig-mode rust-mode go-mode typescript-mode nix-mode
-          web-mode css-mode)
-         . eglot-ensure)
+  :hook (((c-mode c++-mode zig-mode rust-mode go-mode typescript-mode nix-mode
+           web-mode css-mode)
+          . eglot-ensure)
+         (eglot-managed-mode . ab/eglot-merged-capf))
   :config
   ;; web-mode isn't in eglot's default server table; css-mode already is.
   ;; Both servers come from `vscode-langservers-extracted'.
@@ -489,29 +504,6 @@
   "m c" '(ab/clippy :which-key "clippy"))
 
 ;;; Quality of life ---------------------------------------------------------
-
-;; Snippets: type a trigger + TAB, or pick from the completion popup.
-(use-package yasnippet
-  :hook ((prog-mode text-mode conf-mode) . yas-minor-mode)
-  :config
-  ;; web-mode isn't derived from html-mode, so borrow its snippets.
-  (add-hook 'web-mode-hook (lambda () (yas-activate-extra-mode 'html-mode)))
-  :general
-  (leader-keys
-    "s" '(:ignore t :which-key "snippets")
-    "s i" '(yas-insert-snippet :which-key "insert snippet")
-    "s n" '(yas-new-snippet :which-key "new snippet")
-    "s v" '(yas-visit-snippet-file :which-key "edit snippet")))
-
-;; Big ready-made collection covering most languages.
-(use-package yasnippet-snippets
-  :after yasnippet)
-
-;; Show snippets in the corfu popup alongside LSP candidates.
-(use-package yasnippet-capf
-  :after (yasnippet cape)
-  :config
-  (add-hook 'completion-at-point-functions #'yasnippet-capf))
 
 (use-package vundo
   :custom (vundo-glyph-alist vundo-unicode-symbols)
