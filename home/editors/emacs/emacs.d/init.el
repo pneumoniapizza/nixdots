@@ -372,8 +372,14 @@
 (use-package eglot
   :straight nil
   :custom (eglot-autoshutdown t)
-  :hook ((c-mode c++-mode zig-mode rust-mode go-mode typescript-mode nix-mode)
+  :hook ((c-mode c++-mode zig-mode rust-mode go-mode typescript-mode nix-mode
+          web-mode css-mode)
          . eglot-ensure)
+  :config
+  ;; web-mode isn't in eglot's default server table; css-mode already is.
+  ;; Both servers come from `vscode-langservers-extracted'.
+  (add-to-list 'eglot-server-programs
+               '(web-mode . ("vscode-html-language-server" "--stdio")))
   :general
   (leader-keys
     "l r" '(eglot-rename :which-key "rename")
@@ -427,6 +433,25 @@
 (use-package nix-mode
   :mode "\\.nix\\'")
 
+;; HTML / CSS: web-mode for markup (auto-close tags, embedded CSS/JS),
+;; built-in css-mode for stylesheets, emmet for abbreviation expansion (C-j).
+(use-package web-mode
+  :mode "\\.html?\\'"
+  :custom
+  (web-mode-markup-indent-offset 2)
+  (web-mode-css-indent-offset 2)
+  (web-mode-code-indent-offset 2)
+  (web-mode-enable-auto-closing t)
+  (web-mode-enable-auto-pairing t)
+  (web-mode-enable-css-colorization t))
+
+(use-package css-mode
+  :straight nil
+  :custom (css-indent-offset 2))
+
+(use-package emmet-mode
+  :hook ((web-mode css-mode) . emmet-mode))
+
 ;; One "SPC m ..." menu that dispatches on the current major mode, so the
 ;; zig / rust / go bindings no longer overwrite each other.
 (defconst ab/mode-actions
@@ -436,7 +461,9 @@
      (build . rust-compile) (run . rust-run) (test . rust-test)
      (check . rust-check) (clippy . rust-run-clippy))
     ((go-mode)
-     (run . go-run) (test . go-test-current-project)))
+     (run . go-run) (test . go-test-current-project))
+    ((web-mode html-mode mhtml-mode)
+     (run . browse-url-of-buffer)))
   "Per-mode commands for the \"SPC m\" menu: ((MODES (ACTION . COMMAND)...)...).")
 
 (defun ab/mode-action (action)
