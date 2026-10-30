@@ -490,6 +490,29 @@
 
 ;;; Quality of life ---------------------------------------------------------
 
+;; Snippets: type a trigger + TAB, or pick from the completion popup.
+(use-package yasnippet
+  :hook ((prog-mode text-mode conf-mode) . yas-minor-mode)
+  :config
+  ;; web-mode isn't derived from html-mode, so borrow its snippets.
+  (add-hook 'web-mode-hook (lambda () (yas-activate-extra-mode 'html-mode)))
+  :general
+  (leader-keys
+    "s" '(:ignore t :which-key "snippets")
+    "s i" '(yas-insert-snippet :which-key "insert snippet")
+    "s n" '(yas-new-snippet :which-key "new snippet")
+    "s v" '(yas-visit-snippet-file :which-key "edit snippet")))
+
+;; Big ready-made collection covering most languages.
+(use-package yasnippet-snippets
+  :after yasnippet)
+
+;; Show snippets in the corfu popup alongside LSP candidates.
+(use-package yasnippet-capf
+  :after (yasnippet cape)
+  :config
+  (add-hook 'completion-at-point-functions #'yasnippet-capf))
+
 (use-package vundo
   :custom (vundo-glyph-alist vundo-unicode-symbols)
   :general
