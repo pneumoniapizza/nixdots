@@ -44,14 +44,14 @@ command = "wall-backdrop {{ image }}"
 # For example, killing the wallpaper daemon. Usage is like a normal hook.
 # pre_hook = ""
 
-[templates.dunst]
-input_path = "~/.config/matugen/templates/dunstrc"
-output_path = "~/.config/dunst/dunstrc"
-post_hook = "pkill dunst; dunst &"
+# [templates.dunst]
+# input_path = "~/.config/matugen/templates/dunstrc"
+# output_path = "~/.config/dunst/dunstrc"
+# post_hook = "pkill dunst; dunst &"
 
-[templates.foot]
-input_path = "~/.config/matugen/templates/foot.ini"
-output_path = "~/.config/foot/theme.ini"
+# [templates.foot]
+# input_path = "~/.config/matugen/templates/foot.ini"
+# output_path = "~/.config/foot/theme.ini"
 
 [templates.kitty]
 input_path = "~/.config/matugen/templates/kitty-colors.conf"
@@ -62,18 +62,18 @@ post_hook = "pkill -USR1 -x kitty || true"
 input_path = "~/.config/matugen/templates/starship.toml"
 output_path = "~/.config/starship.toml"
 
-[templates.fuzzel]
-input_path = "~/.config/matugen/templates/fuzzel.ini"
-output_path = "~/.config/fuzzel/theme.ini"
+# [templates.fuzzel]
+# input_path = "~/.config/matugen/templates/fuzzel.ini"
+# output_path = "~/.config/fuzzel/theme.ini"
 
 [templates.niri]
 input_path = "~/.config/matugen/templates/colors.kdl"
 output_path = "~/.config/niri/colors.kdl"
 
-[templates.waybar]
-input_path = "~/.config/matugen/templates/colors.css"
-output_path = "~/.config/waybar/colors.css"
-post_hook = "pkill -SIGUSR2 waybar"
+# [templates.waybar]
+# input_path = "~/.config/matugen/templates/colors.css"
+# output_path = "~/.config/waybar/colors.css"
+# post_hook = "pkill -SIGUSR2 waybar"
 
 [templates.vesktop]
 input_path = '~/.config/matugen/templates/discord.css'
@@ -91,10 +91,10 @@ output_path = '~/.config/gtk-3.0/gtk.css'
 input_path = '~/.config/matugen/templates/gtk-4.0.css'
 output_path = '~/.config/gtk-4.0/gtk.css'
 
-[templates.helix]
-input_path = "~/.config/matugen/templates/helix.toml"
-output_path = "~/.config/helix/themes/matugen.toml"
-post_hook = "pkill -USR1 hx"
+# [templates.helix]
+# input_path = "~/.config/matugen/templates/helix.toml"
+# output_path = "~/.config/helix/themes/matugen.toml"
+# post_hook = "pkill -USR1 hx"
 
 [templates.yazi]
 input_path = "~/.config/matugen/templates/yazi-theme.toml"
