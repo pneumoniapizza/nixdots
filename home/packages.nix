@@ -17,7 +17,12 @@
     matugen
     inputs.vivy.packages.${pkgs.stdenv.hostPlatform.system}.default # github:h4shcore/vivy
 
+    # gaming and audio
     godot # why not
     audacity
+
+    # daw
+    reaper
+    vital
   ];
 }
