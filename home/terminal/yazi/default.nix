@@ -13,7 +13,8 @@
         git           # git status marks in the file list
         jump-to-char  # f + char to jump
         toggle-pane   # maximize the preview with T
-        chmod;        # `c m` to chmod
+        chmod         # `c m` to chmod
+        sudo;
     };
 
     initLua = ''
@@ -46,8 +47,18 @@
       { on = "f";     run = "plugin jump-to-char"; desc = "Jump to char"; }
       { on = "T";     run = "plugin toggle-pane max-preview"; desc = "Maximize preview"; }
       { on = [ "c" "m" ]; run = "plugin chmod"; desc = "chmod"; }
+
+      # sudo mode, all under the "R" prefix
+      { on = [ "R" "p" "p" ]; run = "plugin sudo -- paste";                desc = "sudo paste"; }
+      { on = [ "R" "P" ];     run = "plugin sudo -- paste --force";        desc = "sudo paste (overwrite)"; }
+      { on = [ "R" "r" ];     run = "plugin sudo -- rename";               desc = "sudo rename"; }
+      { on = [ "R" "p" "l" ]; run = "plugin sudo -- link";                 desc = "sudo symlink"; }
+      { on = [ "R" "p" "r" ]; run = "plugin sudo -- link --relative";      desc = "sudo relative symlink"; }
+      { on = [ "R" "p" "L" ]; run = "plugin sudo -- hardlink";             desc = "sudo hardlink"; }
+      { on = [ "R" "a" ];     run = "plugin sudo -- create";               desc = "sudo create"; }
+      { on = [ "R" "d" ];     run = "plugin sudo -- remove";               desc = "sudo trash"; }
+      { on = [ "R" "D" ];     run = "plugin sudo -- remove --permanently"; desc = "sudo delete permanently"; }
     ];
-    # NOTE: no `theme = ...` here. matugen owns theme.toml.
   };
 
   # Preview/search deps
