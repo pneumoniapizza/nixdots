@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       # check github:h4shcore/island for options
-      look.shadow = true;
+      look.shadow = false;
       wallpapers.dir = "~/Pictures/wallpapers";
       launcher.terminal = [ "kitty" ];
       clipboard.watch = true;
