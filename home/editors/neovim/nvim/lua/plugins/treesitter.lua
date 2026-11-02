@@ -17,13 +17,14 @@ vim.api.nvim_create_autocmd("PackChanged", {
   end,
 })
 
-u.add({ u.gh("nvim-treesitter/nvim-treesitter", "main") })
+u.add({
+  u.gh("nvim-treesitter/nvim-treesitter", "main"),
+  u.gh("nvim-treesitter/nvim-treesitter-context"),
+})
 
 local langs = {
-  "c", "cpp", "zig", "rust", "go", "gomod", "python", "lua", "nix", "haskell",
-  "javascript", "typescript", "tsx", "html", "css", "json", "yaml", "toml",
-  "markdown", "markdown_inline", "bash", "fish", "make", "cmake",
-  "vim", "vimdoc", "query", "regex", "diff", "git_config", "gitcommit",
+  "cpp", "zig", "rust", "go", "python", "nix", "haskell",
+  "javascript", "typescript", "html", "css", "json", "bash",
 }
 
 -- async, skips what's already installed
@@ -39,3 +40,23 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
+
+-- sticky context: keeps the enclosing function/class header pinned at the top
+u.defer(function()
+  require("treesitter-context").setup({
+    max_lines = 3,
+    min_window_height = 20,
+    multiline_threshold = 1,
+    trim_scope = "outer",
+  })
+end)
+
+vim.keymap.set("n", "[x", function()
+  require("treesitter-context").go_to_context(vim.v.count1)
+end, { desc = "jump to context" })
+
+Snacks.toggle({
+  name = "sticky context",
+  get = function() return require("treesitter-context").enabled() end,
+  set = function() require("treesitter-context").toggle() end,
+}):map("<leader>oc")

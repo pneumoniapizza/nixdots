@@ -5,7 +5,7 @@ vim.api.nvim_create_user_command("PackUpdate", function()
   vim.pack.update()
 end, { desc = "update plugins" })
 
-for _, mod in ipairs({ "ui", "editor", "git", "treesitter", "completion", "lsp", "format" }) do
+for _, mod in ipairs({ "ui", "editor", "git", "treesitter", "session", "completion", "lsp", "format" }) do
   local ok, err = pcall(require, "plugins." .. mod)
   if not ok then
     -- one broken/offline plugin must not take the rest of the config down

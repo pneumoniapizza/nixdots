@@ -10,13 +10,59 @@ u.add({
 require("mini.icons").setup()
 require("mini.icons").mock_nvim_web_devicons()
 
-local header = [[
-███╗   ██╗██╗   ██╗██╗███╗   ███╗
-████╗  ██║██║   ██║██║████╗ ████║
-██╔██╗ ██║██║   ██║██║██╔████╔██║
-██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║
-██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝]]
+-- dashboard ---------------------------------------------------------------
+-- No logo: a greeting + date, your keys, recent files, projects. Colours come
+-- from the theme's own groups (Statement = primary, Function = tertiary), so
+-- they follow matugen live.
+local function fg_of(group)
+  return vim.api.nvim_get_hl(0, { name = group, link = false }).fg or 0xffffff
+end
+
+local function set_hl()
+  vim.api.nvim_set_hl(0, "DashGreeting", { fg = fg_of("Statement"), bold = true })
+  vim.api.nvim_set_hl(0, "DashDate", { fg = fg_of("Function"), italic = true })
+  vim.api.nvim_set_hl(0, "DashRule", { fg = fg_of("Comment") })
+end
+set_hl()
+vim.api.nvim_create_autocmd("ColorScheme", { callback = set_hl })
+
+local function greeting()
+  local h = tonumber(os.date("%H"))
+  if h < 5 then
+    return "still up?"
+  elseif h < 12 then
+    return "good morning"
+  elseif h < 18 then
+    return "good afternoon"
+  end
+  return "good evening"
+end
+
+local function plugin_count()
+  local ok, plugins = pcall(vim.pack.get)
+  return ok and #plugins or 0
+end
+
+local function sections()
+  return {
+    { align = "center", padding = 1, text = { { "", hl = "DashRule" } } },
+    function()
+      return {
+        { align = "center", text = { { greeting(), hl = "DashGreeting" } } },
+        { align = "center", padding = 1, text = { { os.date("%A, %d %B"), hl = "DashDate" } } },
+        { align = "center", padding = 1, text = { { "──────────────────────────", hl = "DashRule" } } },
+      }
+    end,
+    { section = "keys", gap = 1, padding = 2 },
+    { title = "recent files", section = "recent_files", limit = 5, indent = 2, padding = 1 },
+    { title = "projects", section = "projects", limit = 4, indent = 2, padding = 1 },
+    function()
+      local v = vim.version()
+      local info = ("v%d.%d.%d  ·  %d plugins"):format(v.major, v.minor, v.patch, plugin_count())
+      return { { align = "center", text = { { info, hl = "DashRule" } } } }
+    end,
+  }
+end
 
 require("snacks").setup({
   bigfile = { enabled = true },
@@ -39,20 +85,19 @@ require("snacks").setup({
   },
   dashboard = {
     enabled = true,
+    width = 56,
     preset = {
-      header = header,
       keys = {
         { key = "f", desc = "find file", action = ":lua Snacks.dashboard.pick('files')" },
         { key = "g", desc = "grep", action = ":lua Snacks.dashboard.pick('live_grep')" },
         { key = "r", desc = "recent", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+        { key = "s", desc = "restore session", action = ":lua require('persistence').load()" },
+        { key = "p", desc = "projects", action = ":lua Snacks.picker.projects()" },
         { key = "c", desc = "config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
         { key = "q", desc = "quit", action = ":qa" },
       },
     },
-    sections = {
-      { section = "header" },
-      { section = "keys", gap = 1, padding = 1 },
-    },
+    sections = sections(),
   },
 })
 

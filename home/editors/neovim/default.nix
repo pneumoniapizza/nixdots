@@ -2,6 +2,7 @@
 {
   programs.neovim = {
     enable = true;
+    sideloadInitLua = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
