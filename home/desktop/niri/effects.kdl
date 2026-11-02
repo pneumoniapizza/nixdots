@@ -11,6 +11,7 @@ layer-rule {
 }
 
 blur {
+    off
     passes 3
     offset 3.0
     noise 0.02
@@ -21,7 +22,7 @@ window-rule {
     draw-border-with-background false
     geometry-corner-radius 14
     clip-to-geometry true
-    opacity 0.9
+    opacity 1.0
     background-effect {
         blur true
         xray false 

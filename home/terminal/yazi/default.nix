@@ -65,6 +65,5 @@
   home.packages = with pkgs; [
     ffmpeg imagemagick poppler-utils resvg
     fd ripgrep fzf zoxide jq p7zip
-    matugen
   ];
 }
