@@ -8,9 +8,11 @@ marker_selected = { fg = "{{colors.primary.default.hex}}", bg = "{{colors.primar
 marker_copied = { fg = "{{colors.tertiary.default.hex}}", bg = "{{colors.tertiary.default.hex}}" }
 marker_cut = { fg = "{{colors.error.default.hex}}", bg = "{{colors.error.default.hex}}" }
 marker_marked = { fg = "{{colors.secondary.default.hex}}", bg = "{{colors.secondary.default.hex}}" }
-tab_active = { fg = "{{colors.on_primary.default.hex}}", bg = "{{colors.primary.default.hex}}" }
-tab_inactive = { fg = "{{colors.on_surface_variant.default.hex}}", bg = "{{colors.surface_container.default.hex}}" }
 border_style = { fg = "{{colors.outline_variant.default.hex}}" }
+
+[tabs]
+active = { fg = "{{colors.on_primary.default.hex}}", bg = "{{colors.primary.default.hex}}" }
+inactive = { fg = "{{colors.on_surface_variant.default.hex}}", bg = "{{colors.surface_container.default.hex}}" }
 
 [mode]
 normal_main = { fg = "{{colors.on_primary.default.hex}}", bg = "{{colors.primary.default.hex}}", bold = true }
@@ -22,8 +24,8 @@ unset_alt   = { fg = "{{colors.secondary.default.hex}}", bg = "{{colors.surface_
 
 [status]
 overall = { bg = "{{colors.surface_container.default.hex}}" }
-sep_left  = { open = "", close = "" }
-sep_right = { open = "", close = "" }
+sep_left  = { open = "\ue0b6", close = "\ue0b4" }
+sep_right = { open = "\ue0b6", close = "\ue0b4" }
 perm_type  = { fg = "{{colors.primary.default.hex}}" }
 perm_read  = { fg = "{{colors.tertiary.default.hex}}" }
 perm_write = { fg = "{{colors.error.default.hex}}" }
@@ -34,7 +36,7 @@ perm_sep   = { fg = "{{colors.outline.default.hex}}" }
 border = { fg = "{{colors.primary.default.hex}}" }
 selected = { reversed = true }
 
-[select]
+[pick]
 border = { fg = "{{colors.primary.default.hex}}" }
 active = { fg = "{{colors.primary.default.hex}}", bold = true }
 
@@ -52,10 +54,15 @@ separator = "  "
 
 [filetype]
 rules = [
-  { name = "*/", fg = "{{colors.primary.default.hex}}" },
+  { url = "*/", fg = "{{colors.primary.default.hex}}", bold = true },
   { mime = "image/*", fg = "{{colors.tertiary.default.hex}}" },
   { mime = "{video,audio}/*", fg = "{{colors.secondary.default.hex}}" },
   { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*}", fg = "{{colors.error.default.hex}}" },
-  { name = "*", is = "orphan", fg = "{{colors.error.default.hex}}" },
-  { name = "*", is = "exec", fg = "{{colors.secondary.default.hex}}" },
+  { url = "*", is = "orphan", fg = "{{colors.error.default.hex}}" },
+  { url = "*", is = "exec", fg = "{{colors.secondary.default.hex}}" },
+]
+
+[icon]
+prepend_conds = [
+  { "if" = "dir", text = "\uf07b", fg = "{{colors.primary.default.hex}}" },
 ]
