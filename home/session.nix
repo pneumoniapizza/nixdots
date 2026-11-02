@@ -1,6 +1,6 @@
 {...}: {
   home.sessionVariables = {
-    EDITOR = "emacsclient -t -a 'emacs'";
+    # EDITOR = "emacsclient -t -a 'emacs'";
     TERMINAL = "kitty";
   };
   services.udiskie = {

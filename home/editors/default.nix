@@ -3,6 +3,7 @@
     # ./helix
     # ./nixvim
     # ./doom
-    ./emacs
+    # ./emacs
+    ./neovim
   ];
 }

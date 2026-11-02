@@ -110,14 +110,10 @@ input_path = "~/.config/matugen/templates/pywalfox-colors.json"
 output_path = "~/.cache/wal/colors.json"
 post_hook = "pywalfox update"
 
-[templates.doom-emacs]
-input_path = '~/.config/matugen/templates/matugen-theme.el'
-output_path = '~/.config/doom/themes/matugen-theme.el'
-
-[templates.emacs]
-input_path = '~/.config/matugen/templates/matugen-theme.el'
-output_path = '~/.emacs.d/matugen-theme.el'
-
 [templates.quickshell]
 input_path = '~/.config/matugen/templates/quickshell-colors.json'
 output_path = '~/.config/quickshell/colors.json'
+
+[templates.nvim]
+input_path = "~/.config/matugen/templates/nvim.lua"
+output_path = "~/.local/state/nvim/matugen.lua"
