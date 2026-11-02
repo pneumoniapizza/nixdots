@@ -35,8 +35,8 @@
         max_height = 1000;
       };
       plugin.prepend_fetchers = [
-        { id = "git"; url = "*";  run = "git"; }
-        { id = "git"; url = "*/"; run = "git"; }
+        { group = "git"; url = "*";  run = "git"; }
+        { group = "git"; url = "*/"; run = "git"; }
       ];
     };
 
