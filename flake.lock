@@ -179,17 +179,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1793111531,
-        "narHash": "sha256-isBUSDEhCXvbXwa3kZeyqYo6HoSNfHXgIc89Fbybpk4=",
-        "owner": "h4shcore",
-        "repo": "island",
-        "rev": "cb180531213df7059774b414b19c82a347f33302",
-        "type": "github"
+        "lastModified": 1793702905,
+        "narHash": "sha256-GMs7Zk5/w3JGJIjBmJz7U9uEP/wIvUKeUTnbf05C+Iw=",
+        "ref": "refs/heads/main",
+        "rev": "b301a4e8eeaea957992a45a9fe8679073594d5a9",
+        "revCount": 15,
+        "type": "git",
+        "url": "https://codeberg.org/pneumoniapizza/island"
       },
       "original": {
-        "owner": "h4shcore",
-        "repo": "island",
-        "type": "github"
+        "type": "git",
+        "url": "https://codeberg.org/pneumoniapizza/island"
       }
     },
     "nix-doom-emacs-unstraightened": {
@@ -388,13 +388,13 @@
       "locked": {
         "lastModified": 1786467040,
         "narHash": "sha256-3vPbGdzzY7PcrTIbooLG/CX3jfc+/Td8JVXQ4ghECco=",
-        "owner": "h4shcore",
+        "owner": "pneumoniapizza",
         "repo": "vivy",
         "rev": "823d89749732b89cffaccd251c29397985bae6b5",
         "type": "github"
       },
       "original": {
-        "owner": "h4shcore",
+        "owner": "pneumoniapizza",
         "repo": "vivy",
         "type": "github"
       }

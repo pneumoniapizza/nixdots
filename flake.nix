@@ -15,9 +15,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-gaming.url = "github:fufexan/nix-gaming";
-    vivy.url = "github:h4shcore/vivy";
+    vivy.url = "github:pneumoniapizza/vivy";
     island = {
-      url = "github:h4shcore/island";
+      url = "git+https://codeberg.org/pneumoniapizza/island";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-xwayland-satellite-0-8-1.url = "github:nixos/nixpkgs/edfd59b795cd752c36d2dae60870cffcd23d3fb1";
