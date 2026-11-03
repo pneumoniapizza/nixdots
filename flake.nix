@@ -7,13 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-    };
-    nix-doom-emacs-unstraightened = {
-      url = "github:marienz/nix-doom-emacs-unstraightened";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-gaming.url = "github:fufexan/nix-gaming";
     vivy.url = "github:pneumoniapizza/vivy";
     island = {
