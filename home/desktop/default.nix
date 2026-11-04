@@ -20,6 +20,8 @@
     quickshell
     grim
     wl-screenrec
+
+    opencode # ai agent
   ];
 
   imports = [
