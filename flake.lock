@@ -86,11 +86,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793880058,
-        "narHash": "sha256-SZ+Qn+93zxKK26Zf/Ld5PSGZZztVperYJWUe44xbnak=",
+        "lastModified": 1793880365,
+        "narHash": "sha256-F9xBvzd41J4Lq4OYmDsh0mw3ERF97vd98y0sVJ4hG0Y=",
         "ref": "refs/heads/main",
-        "rev": "1f7656ba4edf4226b7914a3dc4ed8fb7e9d49ca1",
-        "revCount": 26,
+        "rev": "18e8c0bda589b0a5a0e695af40802f6529b52b10",
+        "revCount": 27,
         "type": "git",
         "url": "https://codeberg.org/pneumoniapizza/island"
       },
