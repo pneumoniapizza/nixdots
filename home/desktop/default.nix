@@ -9,8 +9,6 @@
     brightnessctl
     # dunst
     libnotify
-    fuzzel
-    # waybar
     cliphist
     wl-clipboard
     pavucontrol
@@ -27,14 +25,11 @@
   imports = [
     ./theme.nix
 
-    ./fuzzel
     ./niri
     # ./hypr
     ./island
     ./wallpaper
   ];
 
-  xdg.configFile."waybar/config.jsonc".source = ./waybar/config.jsonc;
-  xdg.configFile."waybar/style.css".source = ./waybar/style.css;
   xdg.configFile."matugen".source = ./matugen;
 }
