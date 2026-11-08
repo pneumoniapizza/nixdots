@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{...}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -14,6 +9,7 @@
     ../../modules/graphics.nix
     ../../modules/locale.nix
     ../../modules/nh.nix
+    ../../modules/nix-settings.nix
     ../../modules/nix-ld.nix
     ../../modules/networking.nix
     ../../modules/packages.nix
@@ -22,9 +18,6 @@
     ../../modules/users.nix
     ../../modules/virtual.nix
   ];
-
-  # Enable experimental features
-  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   system.stateVersion = "26.05"; # Did you read the comment?
 }

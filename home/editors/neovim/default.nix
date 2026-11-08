@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, dotfiles, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -39,5 +39,5 @@
   };
 
   xdg.configFile."nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home/editors/neovim/nvim";
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/editors/neovim/nvim";
 }

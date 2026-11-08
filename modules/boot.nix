@@ -1,5 +1,9 @@
-{pkgs, lib, ...}: {
-  # Use the systemd-boot EFI boot loader.
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  # Limine as the EFI bootloader.
   boot.loader.limine.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -11,5 +15,4 @@
     zfs = lib.mkForce false;
     ntfs = true;
   };
-
 }

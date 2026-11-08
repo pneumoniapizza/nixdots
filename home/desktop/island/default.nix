@@ -4,7 +4,7 @@
   programs.island = {
     enable = true;
     settings = {
-      # check github:h4shcore/island for options
+      # check codeberg.org/pneumoniapizza/island for options
       look.shadow = true;
       wallpapers.dir = "~/Pictures/wallpapers";
       launcher.terminal = [ "kitty" ];

@@ -15,7 +15,7 @@
     ani-cli
     woomer
     matugen
-    inputs.vivy.packages.${pkgs.stdenv.hostPlatform.system}.default # github:h4shcore/vivy
+    inputs.vivy.packages.${pkgs.stdenv.hostPlatform.system}.default # github:pneumoniapizza/vivy
 
     # gaming and audio
     godot # why not

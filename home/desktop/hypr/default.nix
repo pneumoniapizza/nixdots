@@ -1,10 +1,10 @@
-{config, ...}: let
+{config, dotfiles, ...}: let
   # false: files are copied into the Nix store (pure, needs a rebuild per edit)
   # true:  ~/.config/hypr points straight at your repo, so edits apply with a reload
   liveEdit = false;
 
   # Path to your flake repo, only used when liveEdit = true
-  repoPath = "${config.home.homeDirectory}/dotfiles";
+  repoPath = dotfiles;
 
   src = path:
     if liveEdit

@@ -13,7 +13,7 @@
     wl-clipboard
     pavucontrol
     # xwayland-satellite
-    (let pkgs = import inputs.nixpkgs-xwayland-satellite-0-8-1 {system = "x86_64-linux";}; in pkgs.xwayland-satellite)
+    inputs.nixpkgs-xwayland-satellite-0-8-1.legacyPackages.${pkgs.stdenv.hostPlatform.system}.xwayland-satellite
     pywalfox-native
     quickshell
     grim
