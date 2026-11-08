@@ -81,7 +81,6 @@
 
     shellAbbrs = {
       cd = "z";
-      yy = "yazi";
       nr = "nix run";
       vim = "nvim";
 
@@ -100,6 +99,8 @@
     };
 
     plugins = [
+      { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
+      { name = "done"; src = pkgs.fishPlugins.done.src; }
       { name = "sponge"; src = pkgs.fishPlugins.sponge.src; }
     ];
   };
