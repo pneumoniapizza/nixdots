@@ -1,21 +1,18 @@
 {
-  config,
   pkgs,
   ...
 }: {
   imports = [
     ./tmux
     ./yazi
+    ./fish
   ];
 
   home.packages = with pkgs; [
-    yazi
     fastfetch
     unzip
     p7zip
     ripgrep
-    fish
-    starship
     foot
     kitty
     eza
@@ -35,7 +32,6 @@
     nix-direnv.enable = true;
   };
 
-  xdg.configFile."fish/config.fish".source = ./fish/config.fish;
   xdg.configFile."foot/foot.ini".source = ./foot/foot.ini;
   xdg.configFile."kitty/kitty.conf".source = ./kitty/kitty.conf;
 }
