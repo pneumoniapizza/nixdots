@@ -2,9 +2,7 @@
 
 My NixOS + Home Manager config, as a flake.
 
-![nixos](./assets/nixos1.png)
-![nixos](./assets/nixos2.png)
-![nixos](./assets/nixos3.png)
+![nixos](./assets/nixos.png)
 
 ## Setup
 
