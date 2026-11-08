@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   fonts.fontconfig = {
     enable = true;
 
@@ -8,14 +8,14 @@
         "Symbols Nerd Font Mono"
       ];
 
-      sansSerif = [ "DejaVu Sans" ];
-      serif     = [ "DejaVu Serif" ];
-      emoji     = [ "Noto Color Emoji" ];
+      sansSerif = ["DejaVu Sans"];
+      serif = ["DejaVu Serif"];
+      emoji = ["Noto Color Emoji"];
     };
   };
 
   home.packages = with pkgs; [
-    nerd-fonts.monaspace                  # Neon, Argon, Xenon, Radon, Krypton
+    nerd-fonts.monaspace # Neon, Argon, Xenon, Radon, Krypton
     nerd-fonts.symbols-only
     noto-fonts-color-emoji
     material-symbols

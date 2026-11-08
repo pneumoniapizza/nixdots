@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
@@ -99,9 +98,18 @@
     };
 
     plugins = [
-      { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
-      { name = "done"; src = pkgs.fishPlugins.done.src; }
-      { name = "sponge"; src = pkgs.fishPlugins.sponge.src; }
+      {
+        name = "autopair";
+        src = pkgs.fishPlugins.autopair.src;
+      }
+      {
+        name = "done";
+        src = pkgs.fishPlugins.done.src;
+      }
+      {
+        name = "sponge";
+        src = pkgs.fishPlugins.sponge.src;
+      }
     ];
   };
 
@@ -127,6 +135,6 @@
   programs.atuin = {
     enable = true;
     enableFishIntegration = true;
-    flags = [ "--disable-up-arrow" ];
+    flags = ["--disable-up-arrow"];
   };
 }

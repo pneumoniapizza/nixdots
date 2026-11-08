@@ -1,5 +1,9 @@
-{ config, pkgs, dotfiles, ... }:
 {
+  config,
+  pkgs,
+  dotfiles,
+  ...
+}: {
   programs.neovim = {
     enable = true;
     sideloadInitLua = true;
