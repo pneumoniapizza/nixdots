@@ -1,15 +1,12 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
+    ./fastfetch
     ./tmux
     ./yazi
     ./fish
   ];
 
   home.packages = with pkgs; [
-    fastfetch
     unzip
     p7zip
     ripgrep
