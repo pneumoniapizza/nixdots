@@ -9,7 +9,11 @@ u.add({
 })
 
 require("blink.cmp").setup({
-  keymap = { preset = "enter" }, -- RET accepts, C-n/C-p select, Tab/S-Tab jump snippets
+  keymap = {
+    preset = "enter",
+    ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+    ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+  },
   appearance = { nerd_font_variant = "mono" },
   completion = {
     list = { selection = { preselect = true, auto_insert = false } },
