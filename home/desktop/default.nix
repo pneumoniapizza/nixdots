@@ -28,6 +28,7 @@
     ./niri
     # ./hypr
     ./island
+    ./zathura
     ./wallpaper
   ];
 

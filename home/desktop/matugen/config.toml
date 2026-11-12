@@ -110,6 +110,10 @@ input_path = "~/.config/matugen/templates/pywalfox-colors.json"
 output_path = "~/.cache/wal/colors.json"
 post_hook = "pywalfox update"
 
+[templates.zathura]
+input_path = "~/.config/matugen/templates/zathura-colors"
+output_path = "~/.config/zathura/colors"
+
 [templates.quickshell]
 input_path = '~/.config/matugen/templates/quickshell-colors.json'
 output_path = '~/.config/quickshell/colors.json'
