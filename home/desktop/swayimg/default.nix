@@ -10,18 +10,17 @@
   xdg.configFile."swayimg/init.lua".text = ''
     local colors = "${config.home.homeDirectory}/.config/swayimg/colors.lua"
 
+    swayimg.text.size = 16
+    swayimg.text.font = "MonaspiceNe Nerd Font"
+
     -- pcall: don't abort startup if matugen hasn't generated the file yet
     local function load_colors()
       pcall(dofile, colors)
     end
 
-    swayimg.text.set_size(16)
-    pcall(swayimg.text.set_font, "MonaspiceNe Nerd Font")
-
     load_colors()
 
     swayimg.viewer.on_signal("USR1", load_colors)
     swayimg.gallery.on_signal("USR1", load_colors)
-    swayimg.slideshow.on_signal("USR1", load_colors)
   '';
 }
