@@ -29,6 +29,7 @@
     # ./hypr
     ./island
     ./zathura
+    ./swayimg
     ./wallpaper
   ];
 
