@@ -30,6 +30,7 @@
     ./island
     ./zathura
     ./swayimg
+    ./mimeapps
     ./wallpaper
   ];
 
