@@ -1,5 +1,3 @@
-# ~/.config/qutebrowser/config.py  (managed by home-manager)
-# Colors come from matugen -> ~/.config/qutebrowser/colors.json
 import json
 import os
 import sys
@@ -270,8 +268,15 @@ c.statusbar.padding = {"top": 4, "bottom": 4, "left": 6, "right": 6}
 c.completion.shrink = True
 c.completion.scrollbar.width = 0
 c.hints.border = "none"
-c.scrolling.smooth = True
+c.scrolling.smooth = False
 c.colors.webpage.preferred_color_scheme = "dark"
+# force dark on sites with no dark theme of their own. Qt's darkmode only inverts
+# (it can't take palette colors); the matugen part is webpage.bg below, which is
+# what shows before a page paints and behind transparent pages. toggle: `td`
+c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.algorithm = "lightness-cielab"
+c.colors.webpage.darkmode.policy.images = "smart"
+config.bind("td", "config-cycle colors.webpage.darkmode.enabled true false")
 
 # fallback palette so the browser still looks sane before matugen has run
 P = {
@@ -402,7 +407,7 @@ config.bind(",M", "hint links userscript play")                 # hinted link ->
 config.bind(",i", "frontend-ping ;; cmd-set-text -s :frontend ")    # pick frontend instances
 config.bind(",t", "frontend-toggle")                                 # redirects on/off (this session)
 config.bind(",I", "frontend-reset")                                  # forget picks
-config.bind(",f", "spawn firefox {url}")                        # escape hatch: original site
+config.bind(",f", "spawn librewolf {url}")                        # escape hatch: original site
 config.bind(",c", "set -t -u *://{url:host}/* content.canvas_reading true ;; set -t -u *://{url:host}/* content.cookies.accept all ;; reload")  # fix stuck cloudflare check on this site
 config.bind(",b", "config-cycle content.blocking.enabled true false")
 config.bind(",r", "config-source")                              # reload (matugen does this itself)
