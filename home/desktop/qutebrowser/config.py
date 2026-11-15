@@ -69,6 +69,7 @@ CHOICE = os.path.join(
 )
 
 _latency = {}  # url -> (milliseconds or None, status)
+_redirects_on = [True]  # session-only switch, flipped by :frontend-toggle
 
 
 def _load(path):
@@ -185,7 +186,16 @@ def frontend_reset():
     message.info("frontends: reset to default order")
 
 
+@cmdutils.register(name="frontend-toggle")
+def frontend_toggle():
+    """Turn frontend redirects on/off for this session."""
+    _redirects_on[0] = not _redirects_on[0]
+    message.info("frontend redirects: " + ("ON" if _redirects_on[0] else "OFF"))
+
+
 def _redirect(info):
+    if not _redirects_on[0]:
+        return
     if info.resource_type != interceptor.ResourceType.main_frame:
         return
     url = info.request_url
@@ -376,6 +386,7 @@ c.colors.tabs.indicator.error = P["error"]
 config.bind(",m", "spawn --userscript play")                    # current page -> mpv
 config.bind(",M", "hint links userscript play")                 # hinted link -> mpv
 config.bind(",i", "frontend-ping ;; cmd-set-text -s :frontend ")    # pick frontend instances
+config.bind(",t", "frontend-toggle")                                 # redirects on/off (this session)
 config.bind(",I", "frontend-reset")                                  # forget picks
 config.bind(",f", "spawn firefox {url}")                        # escape hatch: original site
 config.bind(",c", "set -t -u *://{url:host}/* content.canvas_reading true ;; set -t -u *://{url:host}/* content.cookies.accept all ;; reload")  # fix stuck cloudflare check on this site
