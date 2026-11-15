@@ -30,6 +30,7 @@
     ./island
     ./zathura
     ./qutebrowser
+    ./librewolf
     ./swayimg
     ./mimeapps
     ./wallpaper

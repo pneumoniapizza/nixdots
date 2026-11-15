@@ -1,0 +1,83 @@
+:root {
+  --tab-border-radius: 0px !important;
+  --toolbarbutton-border-radius: 0px !important;
+  --panel-border-radius: 0px !important;
+  font-family: "MonaspiceNe Nerd Font", monospace !important;
+  font-size: 10pt !important;
+}
+
+/* tabs: just titles, flat, selected one is full brightness, others dimmed */
+.tab-icon-stack, .tab-close-button, .tab-secondary-label, .tab-context-line,
+.titlebar-spacer, #firefox-view-button, #new-tab-button, #tabs-newtab-button,
+#alltabs-button, #tabbrowser-arrowscrollbox-periphery { display: none !important; }
+
+.tab-background {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  background: transparent !important;
+  margin: 0 !important;
+}
+.tabbrowser-tab:not([selected]) .tab-label { opacity: 0.55; }
+.tabbrowser-tab[selected] .tab-label { opacity: 1; }
+.tabbrowser-tab[selected] .tab-background { border-bottom: 2px solid currentColor !important; }
+.tab-label-container { justify-content: center; }
+
+/* toolbar: urlbar only, no buttons, no box */
+#back-button, #forward-button, #reload-button, #stop-button, #home-button,
+#PanelUI-button, #unified-extensions-button, #nav-bar-overflow-button,
+#downloads-button, #fxa-toolbar-menu-button, #nav-bar toolbarspring,
+#nav-bar-customization-target > toolbarseparator, #page-action-buttons,
+#identity-box, #tracking-protection-icon-container, #urlbar-go-button,
+#star-button-box, #pageActionButton, #sidebar-button, #urlbar-zoom-button,
+#reader-mode-button { display: none !important; }
+
+#navigator-toolbox, #nav-bar, #TabsToolbar { border: none !important; box-shadow: none !important; }
+#urlbar-background {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+#urlbar-input { text-align: center !important; }
+
+/* suggestion list: light padding */
+.urlbarView-body-outer { padding-inline: 6px !important; }
+.urlbarView-body-inner { padding-block: 4px !important; }
+.urlbarView-row { border-radius: 0 !important; margin-block: 1px !important; }
+.urlbarView-row-inner { padding: 5px 10px !important; }
+.urlbarView-favicon, .urlbarView-type-icon { display: none !important; }
+
+/* ── qutebrowser behaviour ── */
+
+/* tab bar disappears when there is only one tab */
+#TabsToolbar:has(#tabbrowser-tabs tab:only-of-type) {
+  visibility: collapse !important;
+}
+
+/* urlbar hidden until focused (ctrl+L), hides again on esc/enter.
+   Hide #urlbar itself: newer Firefox renders it in the top layer, so fading the
+   parent toolbar does not hide it. */
+#urlbar:not([focused]),
+#urlbar:not([focused]) * {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+#nav-bar:not(:focus-within) {
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ── animations ── */
+@keyframes qb-pop {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+#urlbar, #urlbar * { transition: opacity 0.15s ease !important; }
+#urlbar[open] .urlbarView { animation: qb-pop 0.15s ease-out; }
+.urlbarView-row { transition: background-color 0.1s ease !important; }
+.tab-background { transition: background-color 0.15s ease !important; }
+.tab-label { transition: opacity 0.15s ease !important; }
