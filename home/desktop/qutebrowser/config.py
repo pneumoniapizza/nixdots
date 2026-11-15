@@ -2,6 +2,7 @@
 # Colors come from matugen -> ~/.config/qutebrowser/colors.json
 import json
 import os
+import sys
 import threading
 import time
 import urllib.error
@@ -146,7 +147,19 @@ def _instances_model(*, info=None):
     return model
 
 
-@cmdutils.register(name="frontend-ping")
+# :config-source re-executes this file inside the running process, where the
+# commands and the interceptor are already registered. Register only once.
+_RELOAD = getattr(sys, "_frontends_registered", False)
+sys._frontends_registered = True
+
+
+def _cmd(**kw):
+    def deco(f):
+        return f if _RELOAD else cmdutils.register(**kw)(f)
+    return deco
+
+
+@_cmd(name="frontend-ping")
 def frontend_ping():
     """Measure latency to every frontend instance (shown in :frontend completion)."""
     _latency.clear()
@@ -160,7 +173,7 @@ def frontend_ping():
     message.info("frontends: pinging instances...")
 
 
-@cmdutils.register(name="frontend")
+@_cmd(name="frontend")
 @cmdutils.argument("url", completion=_instances_model)
 def frontend(url: str):
     """Use this instance for its frontend service.
@@ -179,14 +192,14 @@ def frontend(url: str):
     raise cmdutils.CommandError(f"unknown instance: {url}")
 
 
-@cmdutils.register(name="frontend-reset")
+@_cmd(name="frontend-reset")
 def frontend_reset():
     """Forget all frontend picks (back to the default order)."""
     _save_choice({})
     message.info("frontends: reset to default order")
 
 
-@cmdutils.register(name="frontend-toggle")
+@_cmd(name="frontend-toggle")
 def frontend_toggle():
     """Turn frontend redirects on/off for this session."""
     _redirects_on[0] = not _redirects_on[0]
@@ -231,7 +244,8 @@ def _redirect(info):
         info.redirect(QUrl(base + rest))
 
 
-interceptor.register(_redirect)
+if not _RELOAD:
+    interceptor.register(_redirect)
 
 # ───────────────── cloudflare challenges ─────────────────
 # The "verify you are human" check needs canvas, first-party cookies and

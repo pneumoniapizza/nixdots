@@ -130,5 +130,6 @@ output_path = "~/.local/state/nvim/matugen.lua"
 [templates.qutebrowser]
 input_path = "~/.config/matugen/templates/qutebrowser-colors.json"
 output_path = "~/.config/qutebrowser/colors.json"
-# only reload if qutebrowser is running (a bare `qutebrowser :cmd` would launch a new one)
-post_hook = "pgrep -f '[q]utebrowser' >/dev/null && qutebrowser ':config-source' >/dev/null 2>&1 || true"
+# only reload if qutebrowser is running (a bare `qutebrowser :cmd` would launch a new one).
+# The pattern must not match this shell's own command line, hence bin/ and the [q].
+post_hook = "pgrep -f 'bin/\\.?[q]utebrowser' >/dev/null && qutebrowser ':config-source' >/dev/null 2>&1 || true"
