@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Play $QUTE_URL in mpv. Frontend watch URLs (invidious/piped/farside) are
+# mapped back to youtube.com so yt-dlp can resolve them.
+url="${QUTE_URL}"
+
+if [[ "$url" == *"/watch?"* && "$url" =~ [?\&]v=([A-Za-z0-9_-]{11}) ]]; then
+  url="https://www.youtube.com/watch?v=${BASH_REMATCH[1]}"
+fi
+
+[[ -n "$QUTE_FIFO" ]] && echo "message-info 'mpv: ${url}'" >>"$QUTE_FIFO"
+setsid -f mpv --force-window=immediate -- "$url" >/dev/null 2>&1

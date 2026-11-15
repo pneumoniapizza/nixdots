@@ -1,0 +1,51 @@
+{
+  "invidious": [
+    {"url": "https://invidious.nerdvpn.de",     "country": "CA", "note": ""},
+    {"url": "https://invidious.tiekoetter.com", "country": "DE", "note": ""},
+    {"url": "https://inv.nadeko.net",           "country": "CL", "note": "captcha"},
+    {"url": "https://yt.chocolatemoo53.com",    "country": "US", "note": ""}
+  ],
+  "redlib": [
+    {"url": "https://redlib.cow.rip",              "country": "IN", "note": "cloudflare"},
+    {"url": "https://redlib.r4fo.com",             "country": "DE", "note": "cloudflare"},
+    {"url": "https://redlib.thepixora.com",        "country": "CA", "note": "cloudflare"},
+    {"url": "https://redlib.catsarch.com",         "country": "US", "note": ""},
+    {"url": "https://redlib.privadency.com",       "country": "DE", "note": ""},
+    {"url": "https://redlib.nadeko.net",           "country": "CL", "note": ""},
+    {"url": "https://redlib.freedit.eu",           "country": "US", "note": ""},
+    {"url": "https://redlib.zanity.net",           "country": "US", "note": ""},
+    {"url": "https://red.artemislena.eu",          "country": "?",  "note": "unverified"},
+    {"url": "https://redlib.privacyredirect.com",  "country": "?",  "note": "unverified"},
+    {"url": "https://safereddit.com",              "country": "?",  "note": "unverified"}
+  ],
+  "nitter": [
+    {"url": "https://nitter.kareem.one",           "country": "SG", "note": "cloudflare"},
+    {"url": "https://xcancel.com",                 "country": "US", "note": ""},
+    {"url": "https://nitter.poast.org",            "country": "US", "note": ""},
+    {"url": "https://nuku.trabun.org",             "country": "CL", "note": "cloudflare"},
+    {"url": "https://nitter.privacyredirect.com",  "country": "FI", "note": ""},
+    {"url": "https://nitter.tiekoetter.com",       "country": "DE", "note": ""},
+    {"url": "https://nitter.catsarch.com",         "country": "US", "note": ""},
+    {"url": "https://nitter.net",                  "country": "NL", "note": ""}
+  ],
+  "proxigram": [
+    {"url": "https://gram.whatever.social", "country": "?", "note": "unverified"}
+  ],
+  "rimgo": [
+    {"url": "https://rimgo.catsarch.com",        "country": "?", "note": "unverified"},
+    {"url": "https://rimgo.privacyredirect.com", "country": "?", "note": "unverified"},
+    {"url": "https://imgur.artemislena.eu",      "country": "?", "note": "unverified"},
+    {"url": "https://imgur.nerdvpn.de",          "country": "?", "note": "unverified"},
+    {"url": "https://rimgo.bloat.cat",           "country": "?", "note": "unverified"}
+  ],
+  "scribe": [
+    {"url": "https://scribe.r4fo.com", "country": "?", "note": "unverified"},
+    {"url": "https://m.opnxng.com",    "country": "?", "note": "unverified"}
+  ],
+  "breezewiki": [
+    {"url": "https://breezewiki.com",          "country": "?", "note": "unverified"},
+    {"url": "https://breezewiki.private.coffee","country": "?", "note": "unverified"},
+    {"url": "https://breeze.hostux.net",       "country": "?", "note": "unverified"},
+    {"url": "https://bw.artemislena.eu",       "country": "?", "note": "unverified"}
+  ]
+}

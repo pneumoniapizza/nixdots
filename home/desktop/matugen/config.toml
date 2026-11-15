@@ -126,3 +126,9 @@ output_path = '~/.config/quickshell/colors.json'
 [templates.nvim]
 input_path = "~/.config/matugen/templates/nvim.lua"
 output_path = "~/.local/state/nvim/matugen.lua"
+
+[templates.qutebrowser]
+input_path = "~/.config/matugen/templates/qutebrowser-colors.json"
+output_path = "~/.config/qutebrowser/colors.json"
+# only reload if qutebrowser is running (a bare `qutebrowser :cmd` would launch a new one)
+post_hook = "pgrep -f '[q]utebrowser' >/dev/null && qutebrowser ':config-source' >/dev/null 2>&1 || true"

@@ -29,6 +29,7 @@
     # ./hypr
     ./island
     ./zathura
+    ./qutebrowser
     ./swayimg
     ./mimeapps
     ./wallpaper
