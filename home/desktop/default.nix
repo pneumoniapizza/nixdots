@@ -12,8 +12,8 @@
     cliphist
     wl-clipboard
     pavucontrol
-    # xwayland-satellite
-    inputs.nixpkgs-xwayland-satellite-0-8-1.legacyPackages.${pkgs.stdenv.hostPlatform.system}.xwayland-satellite
+    xwayland-satellite
+    # inputs.nixpkgs-xwayland-satellite-0-8-1.legacyPackages.${pkgs.stdenv.hostPlatform.system}.xwayland-satellite
     pywalfox-native
     quickshell
     grim
@@ -29,7 +29,7 @@
     # ./hypr
     ./island
     ./zathura
-    ./qutebrowser
+    # ./qutebrowser
     ./librewolf
     ./swayimg
     ./mimeapps
