@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   ...
 }: {
   home.packages = with pkgs; [
@@ -13,7 +12,6 @@
     wl-clipboard
     pavucontrol
     xwayland-satellite
-    # inputs.nixpkgs-xwayland-satellite-0-8-1.legacyPackages.${pkgs.stdenv.hostPlatform.system}.xwayland-satellite
     pywalfox-native
     quickshell
     grim

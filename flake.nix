@@ -23,9 +23,6 @@
       url = "git+https://codeberg.org/pneumoniapizza/island";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # pinned only for xwayland-satellite 0.8.1
-    nixpkgs-xwayland-satellite-0-8-1.url = "github:nixos/nixpkgs/edfd59b795cd752c36d2dae60870cffcd23d3fb1";
   };
 
   outputs = inputs @ {
