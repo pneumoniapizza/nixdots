@@ -10,6 +10,13 @@ marker_cut = { fg = "{{colors.error.default.hex}}", bg = "{{colors.error.default
 marker_marked = { fg = "{{colors.secondary.default.hex}}", bg = "{{colors.secondary.default.hex}}" }
 border_style = { fg = "{{colors.outline_variant.default.hex}}" }
 
+# square cursor: a plain space (drawn in the cursor color) instead of the rounded pill ends, keeps the 1-cell inner padding
+[indicator]
+parent  = { reversed = true }
+current = { reversed = true }
+preview = { underline = true }
+padding = { open = "█", close = "█" }
+
 [tabs]
 active = { fg = "{{colors.on_primary.default.hex}}", bg = "{{colors.primary.default.hex}}" }
 inactive = { fg = "{{colors.on_surface_variant.default.hex}}", bg = "{{colors.surface_container.default.hex}}" }
@@ -17,15 +24,15 @@ inactive = { fg = "{{colors.on_surface_variant.default.hex}}", bg = "{{colors.su
 [mode]
 normal_main = { fg = "{{colors.on_primary.default.hex}}", bg = "{{colors.primary.default.hex}}", bold = true }
 normal_alt  = { fg = "{{colors.primary.default.hex}}", bg = "{{colors.surface_container_high.default.hex}}" }
-select_main = { fg = "{{colors.on_tertiary.default.hex}}", bg = "{{colors.tertiary.default.hex}}", bold = true }
-select_alt  = { fg = "{{colors.tertiary.default.hex}}", bg = "{{colors.surface_container_high.default.hex}}" }
-unset_main  = { fg = "{{colors.on_secondary.default.hex}}", bg = "{{colors.secondary.default.hex}}", bold = true }
-unset_alt   = { fg = "{{colors.secondary.default.hex}}", bg = "{{colors.surface_container_high.default.hex}}" }
+select_main = { fg = "{{colors.on_secondary.default.hex}}", bg = "{{colors.secondary.default.hex}}", bold = true }
+select_alt  = { fg = "{{colors.secondary.default.hex}}", bg = "{{colors.surface_container_high.default.hex}}" }
+unset_main  = { fg = "{{colors.on_tertiary.default.hex}}", bg = "{{colors.tertiary.default.hex}}", bold = true }
+unset_alt   = { fg = "{{colors.tertiary.default.hex}}", bg = "{{colors.surface_container_high.default.hex}}" }
 
 [status]
 overall = { bg = "{{colors.surface_container.default.hex}}" }
-sep_left  = { open = "\ue0b6", close = "\ue0b4" }
-sep_right = { open = "\ue0b6", close = "\ue0b4" }
+sep_left  = { open = "", close = "\ue0b0" }
+sep_right = { open = "\ue0b2", close = "" }
 perm_type  = { fg = "{{colors.primary.default.hex}}" }
 perm_read  = { fg = "{{colors.tertiary.default.hex}}" }
 perm_write = { fg = "{{colors.error.default.hex}}" }
@@ -34,14 +41,17 @@ perm_sep   = { fg = "{{colors.outline.default.hex}}" }
 
 [input]
 border = { fg = "{{colors.primary.default.hex}}" }
+border_set = { as = "plain" }
 selected = { reversed = true }
 
 [pick]
 border = { fg = "{{colors.primary.default.hex}}" }
+border_set = { as = "plain" }
 active = { fg = "{{colors.primary.default.hex}}", bold = true }
 
 [tasks]
 border = { fg = "{{colors.primary.default.hex}}" }
+border_set = { as = "plain" }
 hovered = { fg = "{{colors.on_primary_container.default.hex}}", bg = "{{colors.primary_container.default.hex}}" }
 
 [which]

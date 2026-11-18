@@ -11,9 +11,11 @@ My NixOS + Home Manager config, as a flake.
 | Host | `zeus` (Intel iGPU + NVIDIA, PRIME offload) |
 | Channel | nixos-unstable |
 | Compositor | niri |
-| Shell | [island](https://codeberg.org/pneumoniapizza/island) (Quickshell) |
+| Bar | waybar (vertical, docked on the left) |
+| Launcher | fuzzel (app launcher, clipboard, power menu, wallpaper picker) |
+| Notifications | dunst |
 | Theming | matugen, templates in `home/desktop/matugen/templates` |
-| Terminal | kitty, foot |
+| Terminal | foot (server + `footclient`), kitty as backup |
 | Shell/CLI | fish, starship, atuin, fzf, zoxide, yazi, tmux |
 | Editor | Neovim (`vim.pack`, config symlinked live from this repo) |
 | VCS | git, jujutsu |
@@ -25,9 +27,9 @@ flake.nix        inputs + nixosConfigurations.zeus + homeConfigurations.daksh
 hosts/zeus/      machine config and hardware-configuration.nix
 modules/         NixOS modules (boot, graphics, gaming, services, ...)
 home/            Home Manager config
-  desktop/       niri, island, matugen, GTK/Qt theme, wallpaper
+  desktop/       niri, waybar, fuzzel, dunst, matugen, GTK/Qt theme, wallpaper
   editors/       neovim (active), emacs, helix (disabled)
-  terminal/      fish, kitty, foot, tmux, yazi
+  terminal/      fish, foot, kitty, tmux, yazi
 assets/          screenshots
 ```
 

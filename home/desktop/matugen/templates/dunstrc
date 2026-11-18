@@ -1,25 +1,44 @@
 [global]
-mouse_left_click = do_action
+# --- behaviour ---
+mouse_left_click = do_action, close_current
 mouse_middle_click = close_all
 mouse_right_click = close_current
+dmenu = fuzzel --dmenu
+browser = xdg-open
+always_run_script = true
+sticky_history = yes
+history_length = 50
+stack_duplicates = true
+hide_duplicate_count = false
 
-frame_color = "{{colors.primary.default.hex}}"
+# --- geometry (the bar is on the left, so notifications go top-right) ---
+origin = top-right
+offset = (16, 16)
+width = 380
+notification_limit = 5
+gap_size = 8
+padding = 12
+horizontal_padding = 14
 frame_width = 2
+corner_radius = 0
+frame_color = "{{colors.primary.default.hex}}"
 separator_color = frame
 highlight = "{{colors.primary.default.hex}}"
 
-font = Maple Mono NF 10
-
-shrink = true
-word_wrap = yes
-
-padding = 10
-horizontal_padding = 10
-
+# --- text & icons ---
+font = MonaspiceNe Nerd Font 10
+markup = full
+format = "<b>%s</b>\n%b"
+alignment = left
+vertical_alignment = center
+ellipsize = end
+show_age_threshold = 60
 show_indicators = no
-
-origin = top-center
-offset = (10, 10)
+icon_position = left
+min_icon_size = 32
+max_icon_size = 48
+icon_theme = "Papirus-Dark"
+enable_recursive_icon_lookup = true
 
 [urgency_low]
 background = "{{colors.surface.default.hex}}"
@@ -29,7 +48,7 @@ timeout = 3
 [urgency_normal]
 background = "{{colors.surface.default.hex}}"
 foreground = "{{colors.on_surface.default.hex}}"
-timeout = 3
+timeout = 5
 
 [urgency_critical]
 background = "{{colors.error_container.default.hex}}"

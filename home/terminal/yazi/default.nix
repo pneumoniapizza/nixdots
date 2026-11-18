@@ -8,7 +8,7 @@
     plugins = {
       inherit
         (pkgs.yaziPlugins)
-        full-border # clean rounded border
+        full-border # frame around the panes (square, see initLua)
         smart-enter # enter dirs / open files with one key
         git # git status marks in the file list
         jump-to-char # f + char to jump
@@ -19,7 +19,7 @@
     };
 
     initLua = ''
-      require("full-border"):setup()
+      require("full-border"):setup { set = "plain" }
       require("git"):setup()
     '';
 

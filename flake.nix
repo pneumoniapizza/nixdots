@@ -18,11 +18,6 @@
       url = "github:pneumoniapizza/vivy";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    island = {
-      url = "git+https://codeberg.org/pneumoniapizza/island";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs @ {

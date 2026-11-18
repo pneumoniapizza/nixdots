@@ -1,0 +1,83 @@
+// Minimal, flat, vertical bar docked on the left. All text is rotated 90deg.
+{
+  "layer": "top",
+  "position": "left",
+  "width": 30,
+  "margin": 0,
+  "spacing": 0,
+  "exclusive": true,
+  "reload_style_on_change": true,
+
+  "modules-left": ["niri/workspaces"],
+  "modules-center": ["mpris"],
+  "modules-right": ["tray", "pulseaudio", "network", "battery", "clock"],
+
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": "<span size='10pt'>\u25c7</span>",
+      "empty": "<span size='10pt'>\u25c7</span>",
+      "active": "<span size='15pt'>\u25c6</span>",
+      "focused": "<span size='15pt'>\u25c6</span>",
+      "urgent": "<span size='10pt'>\u25c6</span>"
+    }
+  },
+
+  "mpris": {
+    "rotate": 90,
+    "format": "{status_icon} {artist} - {title}",
+    "format-paused": "{status_icon} {artist} - {title}",
+    "status-icons": {
+      "playing": "\u25b6",
+      "paused": "||"
+    },
+    "max-length": 40,
+    "tooltip-format": "{player}: {album}",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-scroll-up": "playerctl previous",
+    "on-scroll-down": "playerctl next"
+  },
+
+  "tray": {
+    "icon-size": 14,
+    "spacing": 8
+  },
+
+  "pulseaudio": {
+    "rotate": 90,
+    "format": "vol {volume}",
+    "format-muted": "vol mute",
+    "scroll-step": 5,
+    "tooltip": false,
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+
+  "network": {
+    "rotate": 90,
+    "format": "net",
+    "format-wifi": "wifi {signalStrength}",
+    "format-ethernet": "eth",
+    "format-disconnected": "no net",
+    "tooltip-format-wifi": "{essid}\n{ipaddr}",
+    "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
+    "on-click": "footclient nmtui"
+  },
+
+  "battery": {
+    "rotate": 90,
+    "interval": 30,
+    "states": { "warning": 25, "critical": 12 },
+    "format": "bat {capacity}",
+    "format-charging": "chr {capacity}",
+    "format-plugged": "plg {capacity}",
+    "tooltip-format": "{timeTo}"
+  },
+
+  "clock": {
+    "rotate": 90,
+    "format": "{:%H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y}\n<tt>{calendar}</tt>"
+  }
+}

@@ -20,7 +20,7 @@ layout {
     default-column-width
     focus-ring {
         on
-        width 0
+        width 2
     }
     shadow {
         on
@@ -77,19 +77,24 @@ cursor {
 }
 
 spawn-sh-at-startup "awww-daemon"
-// spawn-sh-at-startup "waybar"
-// spawn-sh-at-startup "qs -c notch"
-spawn-sh-at-startup "island"
+spawn-at-startup "foot" "--server"
+spawn-at-startup "waybar"
+spawn-at-startup "dunst"
+spawn-at-startup "wallpaper-picker" "--restore"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
 binds {
-    Mod+Return hotkey-overlay-title="Open a Terminal: kitty " { spawn "kitty"; }
-    // Mod+R hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    // Mod+V hotkey-overlay-title="Open Clipboard" { spawn-sh "cliphist list | fuzzel --dmenu -w 60 | cliphist decode | wl-copy"; }
-    Mod+R { spawn-sh "island ipc call launcher toggle"; }
-    Mod+V { spawn-sh "island ipc call clipboard toggle"; }
-    Mod+W { spawn-sh "island ipc call wallpaper toggle"; }
-    Mod+Backspace { spawn-sh "island ipc call power toggle"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
+    Mod+R hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+V hotkey-overlay-title="Open Clipboard" { spawn-sh "cliphist list | fuzzel --dmenu --width 60 | cliphist decode | wl-copy"; }
+    Mod+W hotkey-overlay-title="Pick a Wallpaper" { spawn "wallpaper-picker"; }
+    Mod+Backspace hotkey-overlay-title="Power Menu" { spawn "power-menu"; }
+
+    // notifications (dunst)
+    Mod+N { spawn "dunstctl" "history-pop"; }
+    Mod+Ctrl+N { spawn "dunstctl" "close-all"; }
+    Mod+Shift+N hotkey-overlay-title="Toggle Do Not Disturb" { spawn "dunst-dnd" "toggle"; }
+
     Mod+B hotkey-overlay-title="Open woomer" { spawn-sh "woomer"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }

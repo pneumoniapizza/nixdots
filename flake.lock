@@ -79,26 +79,6 @@
         "type": "github"
       }
     },
-    "island": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1793880365,
-        "narHash": "sha256-F9xBvzd41J4Lq4OYmDsh0mw3ERF97vd98y0sVJ4hG0Y=",
-        "ref": "refs/heads/main",
-        "rev": "18e8c0bda589b0a5a0e695af40802f6529b52b10",
-        "revCount": 27,
-        "type": "git",
-        "url": "https://codeberg.org/pneumoniapizza/island"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://codeberg.org/pneumoniapizza/island"
-      }
-    },
     "nix-gaming": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -156,7 +136,6 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "island": "island",
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs",
         "vivy": "vivy"

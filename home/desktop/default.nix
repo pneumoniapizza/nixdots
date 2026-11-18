@@ -6,8 +6,6 @@
     awww
     playerctl
     brightnessctl
-    # dunst
-    libnotify
     cliphist
     wl-clipboard
     pavucontrol
@@ -24,8 +22,10 @@
     ./theme.nix
 
     ./niri
+    ./waybar
+    ./fuzzel
+    ./dunst
     # ./hypr
-    ./island
     ./zathura
     # ./qutebrowser
     ./librewolf
