@@ -6,7 +6,8 @@
   ];
 in {
   xdg.configFile = builtins.listToAttrs (map (file: {
-    name = "niri/${file}";
-    value.source = config.lib.file.mkOutOfStoreSymlink "${niriDir}/${file}";
-  }) files);
+      name = "niri/${file}";
+      value.source = config.lib.file.mkOutOfStoreSymlink "${niriDir}/${file}";
+    })
+    files);
 }
