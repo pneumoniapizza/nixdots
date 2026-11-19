@@ -11,6 +11,7 @@
     quickshell
     grim
     wl-screenrec
+    libnotify
 
     opencode # ai agent
   ];
