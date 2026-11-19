@@ -6,6 +6,7 @@ import "../singletons"
 
 // Clipboard history (cliphist). No bar button, no hover trigger: IPC only.
 //   qs ipc call clipboard toggle | open | close | wipe
+// Image entries get a thumbnail, decoded lazily into a runtime cache dir.
 // Keys: Enter copy, Ctrl+D delete entry, Ctrl+J/K or arrows move, Esc close
 PanelWindow {
     id: root
@@ -15,6 +16,8 @@ PanelWindow {
     readonly property int rowH: 28
     readonly property int maxRows: 8
     readonly property int pad: 12
+    readonly property int thumbH: 56
+    readonly property string previewDir: (Quickshell.env("XDG_RUNTIME_DIR") || "/tmp") + "/clipboard-previews"
 
     visible: shown
     exclusionMode: ExclusionMode.Ignore
@@ -40,6 +43,8 @@ PanelWindow {
             input.text = "";
             list.currentIndex = 0;
             reload();
+            // drop cached previews older than a day
+            Quickshell.execDetached(["sh", "-c", "find \"$1\" -type f -mtime +0 -delete 2>/dev/null", "_", previewDir]);
             input.forceActiveFocus();
         }
     }
@@ -77,7 +82,7 @@ PanelWindow {
     }
 
     function label(e) {
-        if (e.image) return "[IMAGE] " + e.text.replace(/^\[\[ binary data\s*/, "").replace(/\s*\]\]$/, "");
+        if (e.image) return "IMAGE " + e.text.replace(/^\[\[ binary data\s*/, "").replace(/\s*\]\]$/, "");
         return e.text.trim().replace(/\s+/g, " ");
     }
 
@@ -201,7 +206,7 @@ PanelWindow {
             ListView {
                 id: list
                 width: parent.width
-                height: Math.max(1, Math.min(count, root.maxRows)) * root.rowH
+                height: Math.max(root.rowH, Math.min(contentHeight, root.maxRows * root.rowH))
                 clip: true
                 model: root.results
                 currentIndex: 0
@@ -215,14 +220,49 @@ PanelWindow {
 
                     readonly property bool sel: ListView.isCurrentItem
 
+                    property bool thumbReady: false
+
                     width: list.width
-                    height: root.rowH
+                    height: modelData.image ? root.thumbH + 8 : root.rowH
                     radius: 0
                     color: sel ? Theme.primary : (hover.containsMouse ? Theme.surfaceHiest : "transparent")
 
+                    // decode image entries to a cache file the first time the row is shown
+                    Process {
+                        id: decode
+                        command: ["sh", "-c",
+                            "f=\"$1/$2\"; mkdir -p \"$1\"; [ -s \"$f\" ] || cliphist decode \"$2\" > \"$f\"",
+                            "_", root.previewDir, row.modelData.id]
+                        onExited: row.thumbReady = true
+                    }
+                    Component.onCompleted: if (modelData.image) decode.running = true
+
+                    Rectangle {
+                        id: thumb
+                        visible: row.modelData.image
+                        x: 10
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: 88
+                        height: root.thumbH
+                        radius: 0
+                        color: Theme.surfaceHi
+                        border.width: 1
+                        border.color: row.sel ? Theme.primaryFg : Theme.outline
+
+                        Image {
+                            anchors.fill: parent
+                            anchors.margins: 1
+                            source: row.thumbReady ? "file://" + root.previewDir + "/" + row.modelData.id : ""
+                            sourceSize: Qt.size(176, 112)
+                            fillMode: Image.PreserveAspectFit
+                            asynchronous: true
+                            cache: false
+                        }
+                    }
+
                     Text {
                         anchors {
-                            left: parent.left
+                            left: row.modelData.image ? thumb.right : parent.left
                             leftMargin: 10
                             right: parent.right
                             rightMargin: 10
