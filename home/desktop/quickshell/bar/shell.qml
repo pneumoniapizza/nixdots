@@ -27,4 +27,7 @@ ShellRoot {
 
     // IPC only: qs ipc call lock lock
     LockScreen {}
+
+    // Volume shows on change; brightness via: qs ipc call osd brightness
+    OSD {}
 }
