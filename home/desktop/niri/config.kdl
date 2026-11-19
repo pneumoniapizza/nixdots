@@ -93,6 +93,7 @@ binds {
     Mod+W hotkey-overlay-title="Pick a Wallpaper" { spawn-sh "qs ipc call wallpaper toggle"; }
     Mod+V hotkey-overlay-title="Clipboard History" { spawn-sh "qs ipc call clipboard toggle"; }
     Mod+BackSpace hotkey-overlay-title="Clipboard History" { spawn-sh "qs ipc call power toggle"; }
+    Mod+Period hotkey-overlay-title="Emoji" { spawn-sh "qs ipc call emoji toggle"; }
 
     Mod+B hotkey-overlay-title="Open woomer" { spawn-sh "woomer"; }
 
@@ -187,8 +188,8 @@ binds {
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
-    Mod+Comma  { consume-window-into-column; }
-    Mod+Period { expel-window-from-column; }
+    // Mod+Comma  { consume-window-into-column; }
+    // Mod+Period { expel-window-from-column; }
 
     Mod+Shift+F { fullscreen-window; }
 

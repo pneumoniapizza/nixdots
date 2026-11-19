@@ -22,6 +22,9 @@ ShellRoot {
     // IPC only: qs ipc call clipboard toggle
     Clipboard {}
 
+    // IPC only: qs ipc call emoji toggle
+    EmojiPicker {}
+
     // IPC only: qs ipc call power toggle
     PowerMenu {}
 
