@@ -22,9 +22,7 @@
     ./theme.nix
 
     ./niri
-    ./waybar
     ./fuzzel
-    ./dunst
     # ./hypr
     ./zathura
     # ./qutebrowser

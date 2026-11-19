@@ -17,8 +17,6 @@
     '';
   };
 
-  # fuzzel wallpaper picker (Mod+W): sets the wallpaper, then lets matugen
-  # regenerate every theme (it also runs wall-backdrop via config.toml).
   # `wallpaper-picker --restore` re-applies the last pick at login.
   wallpaper-picker = pkgs.writeShellApplication {
     name = "wallpaper-picker";

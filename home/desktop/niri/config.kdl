@@ -78,22 +78,13 @@ cursor {
 
 spawn-sh-at-startup "awww-daemon"
 spawn-at-startup "foot" "--server"
-spawn-at-startup "waybar"
-spawn-at-startup "dunst"
-spawn-at-startup "wallpaper-picker" "--restore"
+spawn-at-startup "qs"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
 binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
-    Mod+R hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Mod+V hotkey-overlay-title="Open Clipboard" { spawn-sh "cliphist list | fuzzel --dmenu --width 60 | cliphist decode | wl-copy"; }
-    Mod+W hotkey-overlay-title="Pick a Wallpaper" { spawn "wallpaper-picker"; }
-    Mod+Backspace hotkey-overlay-title="Power Menu" { spawn "power-menu"; }
-
-    // notifications (dunst)
-    Mod+N { spawn "dunstctl" "history-pop"; }
-    Mod+Ctrl+N { spawn "dunstctl" "close-all"; }
-    Mod+Shift+N hotkey-overlay-title="Toggle Do Not Disturb" { spawn "dunst-dnd" "toggle"; }
+    Mod+R hotkey-overlay-title="Run an Application: quickshell" { spawn "qs ipc call launcher toggle"; }
+    Mod+W hotkey-overlay-title="Pick a Wallpaper" { spawn "qs ipc call wallpaper toggle"; }
 
     Mod+B hotkey-overlay-title="Open woomer" { spawn-sh "woomer"; }
 
