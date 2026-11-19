@@ -11,7 +11,7 @@
     };
     cursorTheme = {
       package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
+      name = "Bibata-Original-Classic";
       size = 20;
     };
     gtk3.extraConfig = {
