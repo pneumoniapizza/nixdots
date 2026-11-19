@@ -77,14 +77,14 @@ cursor {
 }
 
 spawn-sh-at-startup "awww-daemon"
+spawn-sh-at-startup "qs"
 spawn-at-startup "foot" "--server"
-spawn-at-startup "qs"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
 binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
-    Mod+R hotkey-overlay-title="Run an Application: quickshell" { spawn "qs ipc call launcher toggle"; }
-    Mod+W hotkey-overlay-title="Pick a Wallpaper" { spawn "qs ipc call wallpaper toggle"; }
+    Mod+R hotkey-overlay-title="Run an Application: quickshell" { spawn-sh "qs ipc call launcher toggle"; }
+    Mod+W hotkey-overlay-title="Pick a Wallpaper" { spawn-sh "qs ipc call wallpaper toggle"; }
 
     Mod+B hotkey-overlay-title="Open woomer" { spawn-sh "woomer"; }
 
