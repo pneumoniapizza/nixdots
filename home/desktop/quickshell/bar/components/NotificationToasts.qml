@@ -48,7 +48,7 @@ PanelWindow {
                 // auto-expire (critical stays until dismissed)
                 Timer {
                     running: !toast.critical
-                    interval: toast.modelData.expireTimeout > 0 ? toast.modelData.expireTimeout * 1000 : 6000
+                    interval: toast.modelData.expireTimeout > 0 ? toast.modelData.expireTimeout * 1000 : 3000
                     onTriggered: toast.modelData.expire()
                 }
 
