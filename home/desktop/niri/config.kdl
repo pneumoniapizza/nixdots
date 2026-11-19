@@ -92,6 +92,7 @@ binds {
     Mod+R hotkey-overlay-title="Run an Application: quickshell" { spawn-sh "qs ipc call launcher toggle"; }
     Mod+W hotkey-overlay-title="Pick a Wallpaper" { spawn-sh "qs ipc call wallpaper toggle"; }
     Mod+V hotkey-overlay-title="Clipboard History" { spawn-sh "qs ipc call clipboard toggle"; }
+    Mod+BackSpace hotkey-overlay-title="Clipboard History" { spawn-sh "qs ipc call power toggle"; }
 
     Mod+B hotkey-overlay-title="Open woomer" { spawn-sh "woomer"; }
 

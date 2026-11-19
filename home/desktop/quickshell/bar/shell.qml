@@ -24,4 +24,7 @@ ShellRoot {
 
     // IPC only: qs ipc call power toggle
     PowerMenu {}
+
+    // IPC only: qs ipc call lock lock
+    LockScreen {}
 }

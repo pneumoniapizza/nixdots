@@ -15,6 +15,7 @@ PanelWindow {
     readonly property int pad: 12
 
     readonly property var actions: [
+        { name: "Lock",     cmd: ["qs", "ipc", "call", "lock", "lock"] },
         { name: "Suspend",  cmd: ["systemctl", "suspend"] },
         { name: "Log out",  cmd: ["niri", "msg", "action", "quit", "--skip-confirmation"] },
         { name: "Reboot",   cmd: ["systemctl", "reboot"] },
