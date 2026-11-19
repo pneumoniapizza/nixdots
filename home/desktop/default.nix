@@ -28,6 +28,7 @@
     # ./hypr
     ./zathura
     # ./qutebrowser
+    ./quickshell
     ./librewolf
     ./swayimg
     ./mimeapps
