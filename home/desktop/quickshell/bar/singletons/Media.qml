@@ -4,16 +4,18 @@ import Quickshell
 import Quickshell.Services.Mpris
 import QtQuick
 
-// Picks the active MPRIS player: first one that is playing, else the first one
 Singleton {
     id: root
 
     readonly property var player: {
         const list = Mpris.players.values;
+        let paused = null;
         for (let i = 0; i < list.length; i++) {
-            if (list[i].isPlaying) return list[i];
+            const p = list[i];
+            if (p.isPlaying) return p;
+            if (!paused && p.playbackState === MprisPlaybackState.Paused) paused = p;
         }
-        return list.length > 0 ? list[0] : null;
+        return paused;
     }
 
     readonly property bool hasPlayer: !!player
