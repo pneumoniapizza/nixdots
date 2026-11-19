@@ -18,4 +18,7 @@ ShellRoot {
 
     // IPC only: qs ipc call wallpaper toggle
     WallpaperSwitcher {}
+
+    // IPC only: qs ipc call clipboard toggle
+    Clipboard {}
 }

@@ -85,6 +85,7 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
     Mod+R hotkey-overlay-title="Run an Application: quickshell" { spawn-sh "qs ipc call launcher toggle"; }
     Mod+W hotkey-overlay-title="Pick a Wallpaper" { spawn-sh "qs ipc call wallpaper toggle"; }
+    Mod+V hotkey-overlay-title="Clipboard History" { spawn-sh "qs ipc call clipboard toggle"; }
 
     Mod+B hotkey-overlay-title="Open woomer" { spawn-sh "woomer"; }
 
