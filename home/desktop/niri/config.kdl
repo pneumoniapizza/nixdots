@@ -20,7 +20,7 @@ layout {
     default-column-width
     focus-ring {
         on
-        width 2
+        width 1
     }
     shadow {
         on
@@ -48,6 +48,7 @@ prefer-no-csd
 screenshot-path "~/Pictures/screenshots/ss_from_%Y-%m-%d %H-%M-%S.png"
 
 animations {
+    off
     window-open {
         spring damping-ratio=0.75 stiffness=800 epsilon=0.0001
     }
@@ -59,6 +60,11 @@ animations {
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
+}
+
+window-rule {
+    match app-id="^footclient$"
+    default-column-width { proportion 0.75; }
 }
 
 window-rule {
