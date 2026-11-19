@@ -27,7 +27,7 @@ PanelWindow {
                 right: parent.right
             }
             width: 1
-            color: Theme.primary
+            color: Theme.outline
         }
     }
 
@@ -63,6 +63,7 @@ PanelWindow {
             horizontalCenter: parent.horizontalCenter
         }
 
+        TimerIndicator {}
         Tray {}
         NotificationToggle {}
         Volume {}

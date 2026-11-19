@@ -3,3 +3,4 @@ singleton Niri Niri.qml
 singleton Media Media.qml
 singleton Notifs Notifs.qml
 singleton Settings Settings.qml
+singleton Countdown Countdown.qml
