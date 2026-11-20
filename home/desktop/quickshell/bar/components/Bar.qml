@@ -27,7 +27,7 @@ PanelWindow {
                 right: parent.right
             }
             width: 1
-            color: Theme.outline
+            color: Theme.primary
         }
     }
 

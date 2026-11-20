@@ -13,6 +13,9 @@ ShellRoot {
 
     NotificationToasts {}
 
+    // IPC only: qs ipc call notifications toggle
+    NotificationCenter {}
+
     // IPC only: qs ipc call launcher toggle
     Launcher {}
 

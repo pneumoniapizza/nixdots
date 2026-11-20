@@ -9,7 +9,7 @@ PanelWindow {
 
     readonly property int toastWidth: 320
 
-    visible: Notifs.count > 0
+    visible: Notifs.count > 0 && !Notifs.centerOpen
     anchors {
         top: true
         left: true
@@ -48,7 +48,7 @@ PanelWindow {
                 // auto-expire (critical stays until dismissed)
                 Timer {
                     running: !toast.critical
-                    interval: toast.modelData.expireTimeout > 0 ? toast.modelData.expireTimeout * 1000 : 3000
+                    interval: toast.modelData.expireTimeout > 0 ? toast.modelData.expireTimeout * 1000 : 6000
                     onTriggered: toast.modelData.expire()
                 }
 
