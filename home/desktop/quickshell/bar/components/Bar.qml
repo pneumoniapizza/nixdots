@@ -27,7 +27,7 @@ PanelWindow {
                 right: parent.right
             }
             width: 1
-            color: Theme.primary
+            color: Theme.outline
         }
     }
 
@@ -65,6 +65,7 @@ PanelWindow {
 
         TimerIndicator {}
         Tray {}
+        QuickSettingsToggle {}
         NotificationToggle {}
         Volume {}
         Battery {}

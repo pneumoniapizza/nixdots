@@ -16,6 +16,9 @@ ShellRoot {
     // IPC only: qs ipc call notifications toggle
     NotificationCenter {}
 
+    // IPC only: qs ipc call quicksettings toggle
+    QuickSettings {}
+
     // IPC only: qs ipc call launcher toggle
     Launcher {}
 
