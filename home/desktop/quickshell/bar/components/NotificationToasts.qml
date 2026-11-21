@@ -12,11 +12,11 @@ PanelWindow {
     visible: Notifs.count > 0 && !Notifs.centerOpen
     anchors {
         top: true
-        left: true
+        right: true
     }
     margins {
         top: 15
-        left: Theme.barWidth + 8
+        right: Theme.barWidth - 15
     }
     exclusionMode: ExclusionMode.Ignore
     implicitWidth: toastWidth
