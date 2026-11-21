@@ -121,7 +121,7 @@ PanelWindow {
         color: Theme.surface
         radius: 0
         border.width: 1
-        border.color: Theme.outline
+        border.color: Theme.border
 
         Item {
             id: keys
@@ -223,6 +223,25 @@ PanelWindow {
                     text: "DND"
                     active: Notifs.dnd
                     onClicked: Notifs.dnd = !Notifs.dnd
+                }
+            }
+
+            // shell
+            Row {
+                spacing: 6
+
+                QsTile {
+                    width: tiles.tileW
+                    text: "FRAME"
+                    active: Settings.frameEnabled
+                    onClicked: Settings.set("frameEnabled", !Settings.frameEnabled)
+                }
+
+                QsTile {
+                    width: tiles.tileW
+                    text: "BORDER"
+                    active: Settings.frameBorder
+                    onClicked: Settings.set("frameBorder", !Settings.frameBorder)
                 }
             }
 

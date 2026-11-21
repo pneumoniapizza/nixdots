@@ -68,7 +68,7 @@ PanelWindow {
         color: Theme.surface
         radius: 0
         border.width: 1
-        border.color: Theme.outline
+        border.color: Theme.border
 
         Column {
             id: content
@@ -98,7 +98,7 @@ PanelWindow {
                 radius: 0
                 color: Theme.surfaceHi
                 border.width: 1
-                border.color: input.activeFocus ? Theme.primary : Theme.outline
+                border.color: input.activeFocus ? Theme.primary : Theme.border
 
                 Text {
                     id: prompt

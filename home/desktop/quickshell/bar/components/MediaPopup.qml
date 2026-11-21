@@ -32,7 +32,7 @@ PopupWindow {
         color: Theme.surface
         radius: 0
         border.width: 1
-        border.color: Theme.outline
+        border.color: Theme.border
 
         Column {
             id: content
@@ -48,7 +48,7 @@ PopupWindow {
                 radius: 0
                 color: Theme.surfaceHi
                 border.width: 1
-                border.color: Theme.outline
+                border.color: Theme.border
 
                 Image {
                     anchors.fill: parent
@@ -106,7 +106,7 @@ PopupWindow {
                     radius: 0
                     color: Theme.surfaceHiest
                     border.width: 1
-                    border.color: Theme.outline
+                    border.color: Theme.border
 
                     Rectangle {
                         x: 1
@@ -177,7 +177,7 @@ PopupWindow {
                         radius: 0
                         color: isToggle ? Theme.primary : (hover.containsMouse ? Theme.surfaceHiest : "transparent")
                         border.width: 1
-                        border.color: isToggle ? Theme.primary : Theme.outline
+                        border.color: isToggle ? Theme.primary : Theme.border
                         opacity: enabledBtn ? 1 : 0.4
 
                         Text {

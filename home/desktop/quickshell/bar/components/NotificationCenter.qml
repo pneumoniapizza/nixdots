@@ -73,7 +73,7 @@ PanelWindow {
         color: Theme.surface
         radius: 0
         border.width: 1
-        border.color: Theme.outline
+        border.color: Theme.border
 
         Item {
             id: keys
@@ -127,7 +127,7 @@ PanelWindow {
                     radius: 0
                     color: Notifs.dnd ? Theme.primary : (dndArea.containsMouse ? Theme.surfaceHiest : "transparent")
                     border.width: 1
-                    border.color: Notifs.dnd ? Theme.primary : Theme.outline
+                    border.color: Notifs.dnd ? Theme.primary : Theme.border
 
                     Text {
                         id: dndText
@@ -154,7 +154,7 @@ PanelWindow {
                     radius: 0
                     color: clearArea.containsMouse ? Theme.surfaceHiest : "transparent"
                     border.width: 1
-                    border.color: Theme.outline
+                    border.color: Theme.border
 
                     Text {
                         id: clearText
@@ -203,7 +203,7 @@ PanelWindow {
                     radius: 0
                     color: cardArea.containsMouse ? Theme.surfaceHi : "transparent"
                     border.width: 1
-                    border.color: critical ? Theme.error : Theme.outline
+                    border.color: critical ? Theme.error : Theme.border
 
                     // urgency accent strip
                     Rectangle {

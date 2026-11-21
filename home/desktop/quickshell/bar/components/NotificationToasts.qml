@@ -15,7 +15,7 @@ PanelWindow {
         left: true
     }
     margins {
-        top: 8
+        top: 15
         left: Theme.barWidth + 8
     }
     exclusionMode: ExclusionMode.Ignore
@@ -43,7 +43,7 @@ PanelWindow {
                 radius: 0
                 color: Theme.surface
                 border.width: 1
-                border.color: critical ? Theme.error : Theme.outline
+                border.color: critical ? Theme.error : Theme.border
 
                 // auto-expire (critical stays until dismissed)
                 Timer {
@@ -140,7 +140,7 @@ PanelWindow {
                                     radius: 0
                                     color: actArea.containsMouse ? Theme.surfaceHiest : "transparent"
                                     border.width: 1
-                                    border.color: Theme.outline
+                                    border.color: Theme.border
 
                                     Text {
                                         id: actText

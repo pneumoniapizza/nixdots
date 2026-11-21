@@ -107,7 +107,7 @@ Scope {
                     radius: 0
                     color: Theme.surfaceHi
                     border.width: 1
-                    border.color: root.failed ? Theme.error : (input.activeFocus ? Theme.primary : Theme.outline)
+                    border.color: root.failed ? Theme.error : (input.activeFocus ? Theme.primary : Theme.border)
 
                     Text {
                         id: prompt

@@ -134,7 +134,7 @@ PanelWindow {
         radius: 0
         color: chipArea.containsMouse ? Theme.surfaceHiest : "transparent"
         border.width: 1
-        border.color: Theme.outline
+        border.color: Theme.border
 
         Text {
             id: chipText
@@ -159,7 +159,7 @@ PanelWindow {
         color: Theme.surface
         radius: 0
         border.width: 1
-        border.color: Theme.outline
+        border.color: Theme.border
 
         Item {
             id: keys
@@ -275,7 +275,7 @@ PanelWindow {
                         radius: 0
                         color: Theme.surfaceHi
                         border.width: cell.sel ? 2 : 1
-                        border.color: cell.sel ? Theme.primary : Theme.outline
+                        border.color: cell.sel ? Theme.primary : Theme.border
 
                         Image {
                             anchors {

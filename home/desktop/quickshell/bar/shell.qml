@@ -12,6 +12,9 @@ ShellRoot {
         }
     }
 
+    // screen frame (top, right, bottom); toggle in quick settings or: qs ipc call frame toggle
+    Frame {}
+
     NotificationToasts {}
 
     // IPC only: qs ipc call notifications toggle

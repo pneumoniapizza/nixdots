@@ -18,6 +18,12 @@ Singleton {
     readonly property bool restoreOnStart: adapter.restoreOnStart
     readonly property bool closeOnApply: adapter.closeOnApply
 
+    // screen frame
+    readonly property bool frameEnabled: adapter.frameEnabled
+    readonly property int frameWidth: adapter.frameWidth       // px
+    readonly property int frameRounding: adapter.frameRounding // px, 0 = square corners
+    readonly property bool frameBorder: adapter.frameBorder    // 1px outline on the frame and the bar
+
     // matugen
     readonly property string mode: adapter.mode               // dark | light
     readonly property string scheme: adapter.scheme           // scheme-tonal-spot, ...
@@ -52,6 +58,10 @@ Singleton {
             property string current: ""
             property bool restoreOnStart: true
             property bool closeOnApply: true
+            property bool frameEnabled: true
+            property int frameWidth: 6
+            property int frameRounding: 0
+            property bool frameBorder: true
             property string mode: "dark"
             property string scheme: "scheme-tonal-spot"
         }

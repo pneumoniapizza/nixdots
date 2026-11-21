@@ -95,7 +95,7 @@ PanelWindow {
         color: Theme.surface
         radius: 0
         border.width: 1
-        border.color: Theme.outline
+        border.color: Theme.border
 
         Text {
             id: label
@@ -121,7 +121,7 @@ PanelWindow {
             radius: 0
             color: Theme.surfaceHi
             border.width: 1
-            border.color: Theme.outline
+            border.color: Theme.border
 
             Rectangle {
                 anchors {

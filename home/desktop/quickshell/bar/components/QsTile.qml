@@ -17,7 +17,7 @@ Rectangle {
     opacity: available ? 1 : 0.4
     color: active ? Theme.primary : (area.containsMouse && available ? Theme.surfaceHiest : "transparent")
     border.width: 1
-    border.color: active ? Theme.primary : Theme.outline
+    border.color: active ? Theme.primary : Theme.border
 
     Text {
         anchors.centerIn: parent

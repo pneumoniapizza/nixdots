@@ -25,6 +25,7 @@ Singleton {
     readonly property color secondaryContainer: adapter.secondaryContainer
     readonly property color error: adapter.error
     readonly property color outline: adapter.outline
+    readonly property color border: primary   // color of every border and divider line
 
     FileView {
         path: Quickshell.env("HOME") + "/.config/quickshell/colors.json"

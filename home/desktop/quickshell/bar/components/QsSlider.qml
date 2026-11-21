@@ -48,7 +48,7 @@ Item {
         radius: 0
         color: Theme.surfaceHi
         border.width: 1
-        border.color: Theme.outline
+        border.color: Theme.border
 
         Rectangle {
             anchors {

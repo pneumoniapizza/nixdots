@@ -21,13 +21,19 @@ PanelWindow {
         radius: 0
 
         Rectangle {
+            // with the frame on, the line only runs along the frame's opening,
+            // so it ends where the frame's own outline starts instead of crossing it
+            readonly property int inset: Settings.frameEnabled && Settings.frameWidth > 0 ? Settings.frameWidth : 0
             anchors {
                 top: parent.top
                 bottom: parent.bottom
                 right: parent.right
+                topMargin: inset
+                bottomMargin: inset
             }
             width: 1
-            color: Theme.primary
+            visible: Settings.frameBorder
+            color: Theme.border
         }
     }
 

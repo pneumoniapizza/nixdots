@@ -26,7 +26,7 @@ Column {
                 height: Theme.boxSize
                 radius: 0
                 border.width: 1
-                border.color: ws.focused || ws.active ? Theme.primary : Theme.outline
+                border.color: Theme.border
                 color: ws.focused ? Theme.primary
                      : ws.active ? Theme.secondaryContainer
                      : ws.occupied ? Theme.outline
