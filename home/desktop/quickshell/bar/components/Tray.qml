@@ -35,14 +35,6 @@ Column {
                 opacity: hover.containsMouse ? 1 : 0.85
             }
 
-            QsMenuAnchor {
-                id: menu
-                menu: entry.modelData.menu
-                anchor.item: entry
-                anchor.edges: Edges.Right
-                anchor.gravity: Edges.Right
-            }
-
             MouseArea {
                 id: hover
                 anchors.fill: parent
@@ -53,7 +45,11 @@ Column {
                 onClicked: mouse => {
                     const it = entry.modelData;
                     if (mouse.button === Qt.RightButton || (mouse.button === Qt.LeftButton && it.onlyMenu)) {
-                        if (it.hasMenu) menu.open();
+                        if (it.hasMenu) {
+                            // open the app's menu just right of the icon
+                            const p = entry.mapToItem(null, entry.width, 0);
+                            it.display(QsWindow.window, p.x, p.y);
+                        }
                     } else if (mouse.button === Qt.MiddleButton) {
                         it.secondaryActivate();
                     } else {

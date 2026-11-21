@@ -10,6 +10,7 @@ Rectangle {
     property bool available: true
 
     signal clicked()
+    signal rightClicked()
 
     height: 32
     radius: 0
@@ -32,7 +33,11 @@ Rectangle {
         anchors.fill: parent
         hoverEnabled: true
         enabled: root.available
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
         cursorShape: Qt.PointingHandCursor
-        onClicked: root.clicked()
+        onClicked: mouse => {
+            if (mouse.button === Qt.RightButton) root.rightClicked();
+            else root.clicked();
+        }
     }
 }

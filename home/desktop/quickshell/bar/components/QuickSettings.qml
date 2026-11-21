@@ -109,6 +109,12 @@ PanelWindow {
         wifiRecheck.restart();
     }
 
+    // right-click on Wi-Fi / Bluetooth opens the device menu
+    function openMenu(target) {
+        shown = false;
+        Quickshell.execDetached(["qs", "ipc", "call", target, "open"]);
+    }
+
     // ---- ui ----
     Rectangle {
         anchors.fill: parent
@@ -200,6 +206,7 @@ PanelWindow {
                     text: "WI-FI"
                     active: root.wifiOn
                     onClicked: root.toggleWifi()
+                    onRightClicked: root.openMenu("network")
                 }
 
                 QsTile {
@@ -208,6 +215,7 @@ PanelWindow {
                     available: root.bt !== null
                     active: root.bt !== null && root.bt.enabled
                     onClicked: if (root.bt) root.bt.enabled = !root.bt.enabled
+                    onRightClicked: root.openMenu("bluetooth")
                 }
 
                 QsTile {
@@ -260,7 +268,7 @@ PanelWindow {
 
             // footer
             Text {
-                text: "CLICK LABEL TO MUTE   ESC CLOSE"
+                text: "RIGHT-CLICK WI-FI/BT FOR DEVICES   ESC CLOSE"
                 color: Theme.fgDim
                 font.family: Theme.font
                 font.pixelSize: Theme.fontSize - 2

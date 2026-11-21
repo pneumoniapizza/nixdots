@@ -1,3 +1,4 @@
+//@ pragma UseQApplication
 import Quickshell
 import "components"
 
@@ -18,6 +19,10 @@ ShellRoot {
 
     // IPC only: qs ipc call quicksettings toggle
     QuickSettings {}
+
+    // IPC only: qs ipc call network toggle / qs ipc call bluetooth toggle
+    NetworkMenu {}
+    BluetoothMenu {}
 
     // IPC only: qs ipc call launcher toggle
     Launcher {}
