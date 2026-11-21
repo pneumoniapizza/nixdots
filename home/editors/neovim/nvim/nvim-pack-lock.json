@@ -9,6 +9,10 @@
       "rev": "016802de402556da54c36bd7359b441266b01cdd",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "cord.nvim": {
+      "rev": "85f295e43550bc968b66d95d8bfd6e12bb17df08",
+      "src": "https://github.com/vyfor/cord.nvim"
+    },
     "friendly-snippets": {
       "rev": "b2ea5c41a150ba72fb656eedb4ed0a86d138d945",
       "src": "https://github.com/rafamadriz/friendly-snippets"
@@ -37,10 +41,6 @@
     "persistence.nvim": {
       "rev": "b20b2a7887bd39c1a356980b45e03250f3dce49c",
       "src": "https://github.com/folke/persistence.nvim"
-    },
-    "presence.nvim": {
-      "rev": "87c857a56b7703f976d3a5ef15967d80508df6e6",
-      "src": "https://github.com/andweeb/presence.nvim"
     },
     "snacks.nvim": {
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
