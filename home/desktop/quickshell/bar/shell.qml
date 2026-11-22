@@ -46,6 +46,9 @@ ShellRoot {
     TimerMenu {}
     TimerAlert {}
 
+    // low / critical battery and charger plug notices
+    BatteryAlert {}
+
     // IPC only: qs ipc call lock lock
     LockScreen {}
 
