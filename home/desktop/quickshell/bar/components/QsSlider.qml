@@ -10,6 +10,7 @@ Item {
     property real value: 0          // 0..1
     property bool muted: false
     property bool clickableLabel: false
+    property string valueText: ""     // overrides the percentage on the right
 
     signal moved(real v)
     signal labelClicked()
@@ -88,7 +89,7 @@ Item {
         }
         width: 44
         horizontalAlignment: Text.AlignRight
-        text: Math.round(root.value * 100) + "%"
+        text: root.valueText !== "" ? root.valueText : Math.round(root.value * 100) + "%"
         color: root.muted ? Theme.error : Theme.fg
         font.family: Theme.font
         font.pixelSize: Theme.fontSize

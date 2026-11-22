@@ -27,6 +27,9 @@ Singleton {
     // matugen
     readonly property string mode: adapter.mode               // dark | light
     readonly property string scheme: adapter.scheme           // scheme-tonal-spot, ...
+    readonly property real contrast: adapter.contrast         // -1..1, passed to matugen --contrast
+    readonly property real saturation: adapter.saturation     // 0..2, 1 = unchanged, applied to the shell colors
+    readonly property int colorIndex: adapter.colorIndex      // 0..4, which source color matugen picks
 
     readonly property var schemes: [
         "scheme-tonal-spot", "scheme-content", "scheme-expressive", "scheme-fidelity",
@@ -64,6 +67,9 @@ Singleton {
             property bool frameBorder: true
             property string mode: "dark"
             property string scheme: "scheme-tonal-spot"
+            property real contrast: 0.5
+            property real saturation: 1.0
+            property int colorIndex: 0
         }
     }
 }

@@ -5,8 +5,11 @@ import QtQuick
 import "../singletons"
 
 // Wallpaper switcher: sets the wallpaper and re-runs matugen on it.
+// Also the theme panel: mode, scheme, contrast, saturation and source color live here.
 // IPC only:  qs ipc call wallpaper toggle | open | close | random | set <path> | mode
-// Keys: hjkl/arrows move, gg/G first/last, Enter apply, m mode, t/T scheme, r rescan, q/Esc close
+//            qs ipc call wallpaper scheme tonal-spot | contrast 0.5 | saturation 1.2 | index 0 | reset
+// Keys: hjkl/arrows move, gg/G first/last, Enter apply, m mode, t/T scheme, c/C contrast,
+//       s/S saturation, i source color, 0 reset theme, r rescan, q/Esc close
 PanelWindow {
     id: root
 
@@ -38,7 +41,7 @@ PanelWindow {
     }
 
     function runMatugen(path) {
-        Quickshell.execDetached(["matugen", "image", path, "-m", Settings.mode, "-t", Settings.scheme]);
+        Matugen.run(path);
     }
 
     function setWallpaper(path) {
@@ -65,6 +68,37 @@ PanelWindow {
         const i = Math.max(0, l.indexOf(Settings.scheme));
         Settings.set("scheme", l[(i + dir + l.length) % l.length]);
         if (Settings.current !== "") runMatugen(Settings.current);
+    }
+
+    function setContrast(v) {
+        Settings.set("contrast", Math.max(-1, Math.min(1, Math.round(v * 20) / 20)));
+        Matugen.applySoon();
+    }
+
+    function setSaturation(v) {
+        // only the shell colors, so it is instant and needs no matugen run
+        Settings.set("saturation", Math.max(0, Math.min(2, Math.round(v * 20) / 20)));
+    }
+
+    function setIndex(i) {
+        Settings.set("colorIndex", ((i % 5) + 5) % 5);
+        Matugen.apply();
+    }
+
+    function setScheme(name) {
+        const full = name.startsWith("scheme-") ? name : "scheme-" + name;
+        if (Settings.schemes.indexOf(full) < 0) return;
+        Settings.set("scheme", full);
+        Matugen.apply();
+    }
+
+    function resetTheme() {
+        Settings.set("mode", "dark");
+        Settings.set("scheme", "scheme-tonal-spot");
+        Settings.set("contrast", 0.5);
+        Settings.set("saturation", 1.0);
+        Settings.set("colorIndex", 0);
+        Matugen.apply();
     }
 
     function random() {
@@ -121,18 +155,24 @@ PanelWindow {
         function random(): void { root.random(); }
         function set(path: string): void { root.apply(path); }
         function mode(): void { root.toggleMode(); }
+        function scheme(name: string): void { root.setScheme(name); }
+        function contrast(v: real): void { root.setContrast(v); }
+        function saturation(v: real): void { root.setSaturation(v); }
+        function index(i: int): void { root.setIndex(i); }
+        function reset(): void { root.resetTheme(); }
     }
 
     // small square button
     component Chip: Rectangle {
         id: chip
         property string label: ""
+        property bool active: false
         signal clicked()
 
         width: chipText.implicitWidth + 20
         height: 24
         radius: 0
-        color: chipArea.containsMouse ? Theme.surfaceHiest : "transparent"
+        color: active ? Theme.primary : (chipArea.containsMouse ? Theme.surfaceHiest : "transparent")
         border.width: 1
         border.color: Theme.border
 
@@ -140,7 +180,7 @@ PanelWindow {
             id: chipText
             anchors.centerIn: parent
             text: chip.label
-            color: Theme.fg
+            color: chip.active ? Theme.primaryFg : Theme.fg
             font.family: Theme.font
             font.pixelSize: Theme.fontSize - 1
         }
@@ -197,6 +237,12 @@ PanelWindow {
                 else if (t === "m") root.toggleMode();
                 else if (t === "t") root.cycleScheme(1);
                 else if (t === "T") root.cycleScheme(-1);
+                else if (t === "c") root.setContrast(Settings.contrast + 0.1);
+                else if (t === "C") root.setContrast(Settings.contrast - 0.1);
+                else if (t === "s") root.setSaturation(Settings.saturation + 0.1);
+                else if (t === "S") root.setSaturation(Settings.saturation - 0.1);
+                else if (t === "i") root.setIndex(Settings.colorIndex + 1);
+                else if (t === "0") root.resetTheme();
                 else if (t === "r") root.rescan();
                 else return;
                 root.pendingG = false;
@@ -239,6 +285,59 @@ PanelWindow {
                     Chip {
                         label: "RESCAN"
                         onClicked: root.rescan()
+                    }
+                }
+            }
+
+            // theme: contrast, saturation, source color
+            Row {
+                width: parent.width
+                height: 28
+                spacing: 16
+
+                QsSlider {
+                    width: 270
+                    label: "CONTRAST"
+                    value: (Settings.contrast + 1) / 2
+                    valueText: (Settings.contrast > 0 ? "+" : "") + Settings.contrast.toFixed(2)
+                    onMoved: v => root.setContrast(v * 2 - 1)
+                }
+
+                QsSlider {
+                    width: 270
+                    label: "SATURATE"
+                    value: Settings.saturation / 2
+                    valueText: Math.round(Settings.saturation * 100) + "%"
+                    onMoved: v => root.setSaturation(v * 2)
+                }
+
+                Row {
+                    anchors.verticalCenter: parent.verticalCenter
+                    spacing: 4
+
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        rightPadding: 4
+                        text: "COLOR"
+                        color: Theme.fgDim
+                        font.family: Theme.font
+                        font.pixelSize: Theme.fontSize - 2
+                    }
+
+                    Repeater {
+                        model: 5
+
+                        Chip {
+                            required property int index
+                            label: String(index + 1)
+                            active: Settings.colorIndex === index
+                            onClicked: root.setIndex(index)
+                        }
+                    }
+
+                    Chip {
+                        label: "RESET"
+                        onClicked: root.resetTheme()
                     }
                 }
             }
@@ -360,7 +459,7 @@ PanelWindow {
 
                 Text {
                     id: hint
-                    text: "hjkl MOVE   gg/G ENDS   ENTER APPLY   m MODE   t/T TYPE   r RESCAN   q CLOSE"
+                    text: "hjkl MOVE   ENTER APPLY   m MODE   t/T TYPE   c/C CONTRAST   s/S SATURATE   i COLOR   0 RESET   q CLOSE"
                     color: Theme.fgDim
                     font.family: Theme.font
                     font.pixelSize: Theme.fontSize - 2
