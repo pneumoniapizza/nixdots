@@ -69,8 +69,15 @@ require("snacks").setup({
   quickfile = { enabled = true },
   input = { enabled = true },
   notifier = { enabled = true, style = "compact", timeout = 3000 },
-  indent = { enabled = true, animate = { enabled = false } },
-  explorer = { enabled = true, replace_netrw = true },
+  indent = {
+    enabled = true,
+    animate = { enabled = false },
+    indent = { char = "│" },
+    scope = { enabled = true, char = "│", underline = false },
+  },
+  zen = { enabled = true, toggles = { dim = false } },
+  -- oil.nvim owns directory buffers (`nvim .`, `-`); the tree stays on SPC t t
+  explorer = { enabled = true, replace_netrw = false },
   picker = {
     enabled = true,
     ui_select = true,
@@ -156,6 +163,9 @@ Snacks.toggle.option("relativenumber", { name = "relative numbers" }):map("<lead
 Snacks.toggle.option("wrap", { name = "wrap" }):map("<leader>ow")
 Snacks.toggle.diagnostics():map("<leader>od")
 Snacks.toggle.inlay_hints():map("<leader>oh")
+Snacks.toggle.indent():map("<leader>oi")
+Snacks.toggle.zen():map("<leader>oz")
+map("n", "<leader>oZ", function() Snacks.zen.zoom() end, { desc = "zoom window" })
 Snacks.toggle({
   name = "transparent background",
   get = function() return vim.g.transparent == true end,
