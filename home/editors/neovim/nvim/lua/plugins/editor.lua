@@ -8,7 +8,7 @@ u.defer(function()
 
   -- colour previews: a coloured dot before #rrggbb and rgb(r, g, b) values
   local hi = require("mini.hipatterns")
-  local dot = "● "
+  local dot = "■ "
   hi.setup({
     highlighters = {
       hex_color = hi.gen_highlighter.hex_color({ style = "inline", inline_text = dot }),

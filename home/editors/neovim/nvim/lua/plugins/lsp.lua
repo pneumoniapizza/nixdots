@@ -8,13 +8,13 @@ vim.diagnostic.config({
   severity_sort = true,
   underline = true,
   update_in_insert = false,
-  virtual_text = { prefix = "●", spacing = 2 },
-  float = { border = "rounded", source = true },
+  virtual_text = { prefix = "■", spacing = 2 },
+  float = { border = "single", source = true },
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "✘",
       [vim.diagnostic.severity.WARN] = "▲",
-      [vim.diagnostic.severity.INFO] = "●",
+      [vim.diagnostic.severity.INFO] = "■",
       [vim.diagnostic.severity.HINT] = "◆",
     },
   },
@@ -37,7 +37,13 @@ vim.lsp.config("nixd", {
   settings = { nixd = { formatting = { command = { "nixfmt" } } } },
 })
 
--- add `haskell-language-server` to nvim.nix and "hls" here when you want it
+vim.lsp.config("clangd", {
+  cmd = {
+    "clangd",
+    "--query-driver=/nix/store/*/bin/*gcc*,/run/current-system/sw/bin/*gcc*",
+  },
+})
+
 vim.lsp.enable({
   "clangd", "zls", "rust_analyzer", "gopls", "nixd", "lua_ls",
   "basedpyright", "vtsls", "html", "cssls",

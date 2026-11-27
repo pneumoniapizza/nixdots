@@ -274,7 +274,7 @@ function M.apply()
   for name, col in pairs({ Error = c.error, Warn = warn, Info = c.primary, Hint = c.secondary, Ok = c.tertiary }) do
     hl["Diagnostic" .. name] = { fg = col }
     hl["DiagnosticVirtualText" .. name] = { fg = col, bg = mix(c.surface, col, 0.1) }
-    hl["DiagnosticUnderline" .. name] = { undercurl = true, sp = col }
+    hl["DiagnosticUnderline" .. name] = { underline = true, sp = col }
   end
 
   for name, spec in pairs(hl) do

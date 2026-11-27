@@ -110,7 +110,7 @@ require("snacks").setup({
 
 -- which-key (leader groups mirror the old emacs layout)
 local wk = require("which-key")
-wk.setup({ preset = "helix", delay = 300, icons = { mappings = false } })
+wk.setup({ preset = "helix", delay = 300, icons = { mappings = false }, win = { border = "single" } })
 wk.add({
   { "<leader>b", group = "buffer" },
   { "<leader>w", group = "window" },
