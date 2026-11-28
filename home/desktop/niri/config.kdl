@@ -20,7 +20,7 @@ layout {
     default-column-width
     focus-ring {
         on
-        width 1
+        width 2
     }
     shadow {
         on

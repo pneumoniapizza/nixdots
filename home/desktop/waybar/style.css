@@ -13,7 +13,7 @@
 window#waybar {
   background: alpha(@bg, 0.92);
   color: @fg;
-  border: 1px solid @primary; /* same as the niri focus ring */
+  border: 2px solid @primary; /* same as the niri focus ring */
   border-radius: 12px;
 }
 
