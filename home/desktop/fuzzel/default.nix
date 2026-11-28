@@ -96,7 +96,7 @@ in {
         border = "c4a7e7ff";
       };
       border = {
-        width = 1;
+        width = 2;
         radius = 12;
       };
     };
