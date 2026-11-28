@@ -5,7 +5,7 @@
     brightnessctl
     cliphist
     wl-clipboard
-    pavucontrol
+    pwvucontrol # pavucontrol but in rust
     xwayland-satellite
     grim
     wl-screenrec
