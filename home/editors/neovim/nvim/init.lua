@@ -16,6 +16,6 @@ require("core.options")
 require("core.keymaps")
 require("core.tmux")
 require("core.autocmds")
-require("theme").setup() -- colours first, so the first paint is already themed
+require("rose-pine").setup() -- colours first, so the first paint is already themed
 require("core.statusline")
 require("plugins")

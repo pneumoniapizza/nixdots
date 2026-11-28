@@ -7,29 +7,34 @@
     wl-clipboard
     pavucontrol
     xwayland-satellite
-    pywalfox-native
-    quickshell
     grim
     wl-screenrec
     libnotify
+
+    waybar
+    swayosd
+    swaylock
+    swayidle
+    batsignal
 
     opencode # ai agent
   ];
 
   imports = [
-    ./theme.nix
+    ./gtk
 
     ./niri
     ./fuzzel
-    # ./hypr
+    ./dunst
+    ./discord
+    ./waybar
+    ./osd
+    ./lock
     ./zathura
     # ./qutebrowser
-    ./quickshell
     ./librewolf
     ./swayimg
     ./mimeapps
     ./wallpaper
   ];
-
-  xdg.configFile."matugen".source = ./matugen;
 }

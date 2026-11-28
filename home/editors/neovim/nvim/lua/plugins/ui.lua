@@ -12,8 +12,7 @@ require("mini.icons").mock_nvim_web_devicons()
 
 -- dashboard ---------------------------------------------------------------
 -- No logo: a greeting + date, your keys, recent files, projects. Colours come
--- from the theme's own groups (Statement = primary, Function = tertiary), so
--- they follow matugen live.
+-- from the colorscheme's own groups (Statement = primary, Function = tertiary).
 local function fg_of(group)
   return vim.api.nvim_get_hl(0, { name = group, link = false }).fg or 0xffffff
 end
@@ -171,6 +170,6 @@ Snacks.toggle({
   get = function() return vim.g.transparent == true end,
   set = function(on)
     vim.g.transparent = on
-    vim.cmd.colorscheme("matugen")
+    vim.cmd.colorscheme("rose-pine")
   end,
 }):map("<leader>ot")

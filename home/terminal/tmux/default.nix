@@ -9,7 +9,7 @@
     baseIndex = 1;
     escapeTime = 0; # no esc lag in nvim
     historyLimit = 50000;
-    secureSocket = false; # fixed /tmp socket so the matugen hook can always reach the server
+    secureSocket = false; # fixed /tmp socket
 
     extraConfig = ''
       # terminal
@@ -33,17 +33,17 @@
       set -g popup-border-lines single
       set -g menu-border-lines single
 
-      # fallback palette; matugen overrides every @c_* in matugen-colors.conf
-      set -g @c_primary "#a6c8ff"
-      set -g @c_on_primary "#00315e"
-      set -g @c_secondary "#bbc7db"
-      set -g @c_on_secondary "#253140"
-      set -g @c_tertiary "#d7bee4"
-      set -g @c_on_tertiary "#3b2948"
-      set -g @c_bar "#1d2024"
-      set -g @c_seg "#272a2f"
-      set -g @c_dim "#c3c7cf"
-      set -g @c_outline "#8d9199"
+      # rose-pine palette used by the statusline below
+      set -g @c_primary "#c4a7e7"
+      set -g @c_on_primary "#191724"
+      set -g @c_secondary "#9ccfd8"
+      set -g @c_on_secondary "#191724"
+      set -g @c_tertiary "#ebbcba"
+      set -g @c_on_tertiary "#191724"
+      set -g @c_bar "#1f1d2e"
+      set -g @c_seg "#26233a"
+      set -g @c_dim "#908caa"
+      set -g @c_outline "#6e6a86"
 
       # nvim-style statusline:  [mode]>[ dir ]> windows ........ host <[ command ]<[ time ]
       # mode colors follow nvim: Normal = primary, Insert = tertiary (prefix held), Visual = secondary (copy mode)
@@ -59,7 +59,6 @@
       set -g window-status-current-format "#[fg=#{E:@m_bg},bold] \u25c6 #I #W#{?window_zoomed_flag, #[fg=#{@c_outline}]zoom,} "
 
       # keys
-      bind r source-file ~/.config/tmux/matugen-colors.conf \; display "colors reloaded"
       bind '|' split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
@@ -87,8 +86,24 @@
       bind -T copy-mode-vi C-l select-pane -R
       bind C-l send-keys C-l        # prefix+Ctrl+l = clear screen
 
-      # palette + style colors, written by matugen (-q: ok if it doesn't exist yet)
-      source-file -q ~/.config/tmux/matugen-colors.conf
+      # rose-pine
+      set -g status-style "bg=#1f1d2e,fg=#908caa"
+      set -g window-status-style "fg=#908caa,bg=#1f1d2e"
+      set -g window-status-activity-style "fg=#ebbcba,bg=#1f1d2e"
+      set -g window-status-bell-style "fg=#eb6f92,bg=#1f1d2e,bold"
+      set -g pane-border-style "fg=#403d52"
+      set -g pane-active-border-style "fg=#c4a7e7"
+      set -g display-panes-colour "#9ccfd8"
+      set -g display-panes-active-colour "#c4a7e7"
+      set -g message-style "bg=#26233a,fg=#e0def4"
+      set -g message-command-style "bg=#26233a,fg=#c4a7e7"
+      set -g mode-style "bg=#493f5b,fg=#c4a7e7"
+      set -g clock-mode-colour "#c4a7e7"
+      set -g menu-style "bg=#26233a,fg=#e0def4"
+      set -g menu-selected-style "bg=#c4a7e7,fg=#191724"
+      set -g menu-border-style "fg=#403d52"
+      set -g popup-style "bg=#1c1a29"
+      set -g popup-border-style "fg=#403d52"
     '';
   };
 }

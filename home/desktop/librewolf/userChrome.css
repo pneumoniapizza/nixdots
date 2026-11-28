@@ -1,7 +1,7 @@
 :root {
-  --tab-border-radius: 0px !important;
-  --toolbarbutton-border-radius: 0px !important;
-  --panel-border-radius: 0px !important;
+  --tab-border-radius: 12px !important;
+  --toolbarbutton-border-radius: 12px !important;
+  --panel-border-radius: 12px !important;
   font-family: "MonaspiceNe Nerd Font", monospace !important;
   font-size: 10pt !important;
 }
@@ -12,7 +12,7 @@
 #alltabs-button, #tabbrowser-arrowscrollbox-periphery { display: none !important; }
 
 .tab-background {
-  border-radius: 0 !important;
+  border-radius: 12px !important;
   border: none !important;
   box-shadow: none !important;
   outline: none !important;
@@ -36,7 +36,7 @@
 #navigator-toolbox, #nav-bar, #TabsToolbar { border: none !important; box-shadow: none !important; }
 #urlbar-background {
   border: none !important;
-  border-radius: 0 !important;
+  border-radius: 12px !important;
   box-shadow: none !important;
   background: transparent !important;
 }
@@ -45,8 +45,8 @@
 /* suggestion list: light padding */
 .urlbarView-body-outer { padding-inline: 6px !important; }
 .urlbarView-body-inner { padding-block: 4px !important; }
-.urlbarView-row { border-radius: 0 !important; margin-block: 1px !important; }
-.urlbarView-row-inner { padding: 5px 10px !important; }
+.urlbarView-row { border-radius: 12px !important; margin-block: 1px !important; }
+.urlbarView-row-inner { padding: 5px 12px !important; }
 .urlbarView-favicon, .urlbarView-type-icon { display: none !important; }
 
 /* ── qutebrowser behaviour ── */

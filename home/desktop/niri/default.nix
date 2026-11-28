@@ -2,6 +2,7 @@
   niriDir = "${config.home.homeDirectory}/dotfiles/home/desktop/niri";
   files = [
     "config.kdl"
+    "colors.kdl"
     "effects.kdl"
   ];
 in {

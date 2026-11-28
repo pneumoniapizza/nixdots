@@ -1,0 +1,69 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 40,
+  "spacing": 0,
+  "margin-top": 12,
+  "margin-left": 480,
+  "margin-right": 480,
+  "margin-bottom": 0,
+
+  "modules-left": ["niri/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "network", "battery", "tray"],
+
+  "niri/workspaces": {
+    "format": "{index}"
+  },
+
+  "clock": {
+    "format": "{:%a %d  \u00b7  %H:%M}",
+    "format-alt": "{:%d %B %Y}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "today": "<b><u>{}</u></b>"
+      }
+    }
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "\uf026",
+    "format-icons": {
+      "default": ["\uf026", "\uf027", "\uf028"]
+    },
+    "tooltip-format": "{desc}: {volume}%",
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "on-click-right": "swayosd-client --output-volume mute-toggle"
+  },
+
+  "network": {
+    "format-wifi": "\uf1eb",
+    "format-ethernet": "\uf0ac",
+    "format-disconnected": "\uf071",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}",
+    "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+    "tooltip-format-disconnected": "disconnected",
+    "on-click": "footclient --app-id=popup nmtui"
+  },
+
+  "battery": {
+    "format": "{icon}",
+    "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
+    "format-charging": "\uf0e7",
+    "format-plugged": "\uf1e6",
+    "tooltip-format": "{capacity}%  {timeTo}",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  }
+}

@@ -113,12 +113,6 @@
     ];
   };
 
-  programs.starship = {
-    enable = true;
-    enableFishIntegration = true;
-    enableTransience = true;
-  };
-
   # Fuzzy finder: ctrl-t files, alt-c dirs (ctrl-r is left to atuin).
   programs.fzf = {
     enable = true;

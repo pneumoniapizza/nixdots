@@ -271,35 +271,29 @@ c.hints.border = "none"
 c.scrolling.smooth = False
 c.colors.webpage.preferred_color_scheme = "dark"
 # force dark on sites with no dark theme of their own. Qt's darkmode only inverts
-# (it can't take palette colors); the matugen part is webpage.bg below, which is
+# (it can't take custom colors); the rose-pine part is webpage.bg below, which is
 # what shows before a page paints and behind transparent pages. toggle: `td`
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = "lightness-cielab"
 c.colors.webpage.darkmode.policy.images = "smart"
 config.bind("td", "config-cycle colors.webpage.darkmode.enabled true false")
 
-# fallback palette so the browser still looks sane before matugen has run
+# rose-pine
 P = {
-    "background": "#111318", "on_background": "#e2e2e9",
-    "surface": "#111318", "on_surface": "#e2e2e9", "on_surface_variant": "#c4c6d0",
-    "surface_container_low": "#191c20", "surface_container": "#1d2024",
-    "surface_container_high": "#282a2f",
-    "primary": "#aac7ff", "on_primary": "#0a305f",
-    "primary_container": "#284777", "on_primary_container": "#d6e3ff",
-    "secondary": "#bfc6dc", "on_secondary": "#293041",
-    "secondary_container": "#3f4759", "on_secondary_container": "#dbe2f9",
-    "tertiary": "#debcdf", "on_tertiary": "#3f2844",
-    "tertiary_container": "#573e5c", "on_tertiary_container": "#fbd7fc",
-    "error": "#ffb4ab", "on_error": "#690005",
-    "error_container": "#93000a", "on_error_container": "#ffdad6",
-    "outline": "#8e9099", "outline_variant": "#44474e",
+    "background": "#191724", "on_background": "#e0def4",
+    "surface": "#191724", "on_surface": "#e0def4", "on_surface_variant": "#908caa",
+    "surface_container_low": "#1c1a29", "surface_container": "#1f1d2e",
+    "surface_container_high": "#26233a",
+    "primary": "#c4a7e7", "on_primary": "#191724",
+    "primary_container": "#493f5b", "on_primary_container": "#c4a7e7",
+    "secondary": "#9ccfd8", "on_secondary": "#191724",
+    "secondary_container": "#3e4b56", "on_secondary_container": "#9ccfd8",
+    "tertiary": "#ebbcba", "on_tertiary": "#191724",
+    "tertiary_container": "#54454e", "on_tertiary_container": "#ebbcba",
+    "error": "#eb6f92", "on_error": "#191724",
+    "error_container": "#543043", "on_error_container": "#eb6f92",
+    "outline": "#6e6a86", "outline_variant": "#403d52",
 }
-try:
-    with open(os.path.join(str(config.configdir), "colors.json")) as f:
-        P.update(json.load(f))
-except (OSError, ValueError):
-    pass
-
 c.colors.webpage.bg = P["background"]
 
 c.colors.completion.fg = [P["on_surface_variant"], P["on_surface"], P["on_surface"]]
@@ -410,4 +404,4 @@ config.bind(",I", "frontend-reset")                                  # forget pi
 config.bind(",f", "spawn librewolf {url}")                        # escape hatch: original site
 config.bind(",c", "set -t -u *://{url:host}/* content.canvas_reading true ;; set -t -u *://{url:host}/* content.cookies.accept all ;; reload")  # fix stuck cloudflare check on this site
 config.bind(",b", "config-cycle content.blocking.enabled true false")
-config.bind(",r", "config-source")                              # reload (matugen does this itself)
+config.bind(",r", "config-source")                              # reload (`theme` does this itself)

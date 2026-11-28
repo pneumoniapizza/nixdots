@@ -1,18 +1,11 @@
-{pkgs, ...}: let
+{...}: let
   amo = name: "https://addons.mozilla.org/firefox/downloads/latest/${name}/latest.xpi";
 in {
   programs.librewolf = {
     enable = true;
 
-    # pywalfox <-> browser bridge (matugen's post_hook runs `pywalfox update`)
-    nativeMessagingHosts = [pkgs.pywalfox-native];
-
     # extensions installed declaratively via enterprise policy (no NUR needed)
     policies.ExtensionSettings = {
-      "pywalfox@frewacom.org" = {
-        installation_mode = "force_installed";
-        install_url = amo "pywalfox";
-      };
       "uBlock0@raymondhill.net" = {
         installation_mode = "force_installed";
         install_url = amo "ublock-origin";

@@ -1,0 +1,13 @@
+@define-color bg            #191724;
+@define-color bg-alt        #1f1d2e;
+@define-color bg-hover      #26233a;
+@define-color fg            #e0def4;
+@define-color fg-muted      #908caa;
+@define-color primary       #c4a7e7;
+@define-color secondary     #9ccfd8;
+@define-color tertiary      #ebbcba;
+@define-color warning       #9ccfd8;
+@define-color error         #eb6f92;
+@define-color outline       #6e6a86;
+@define-color outline-alt   #403d52;
+@define-color accent        #c4a7e7;

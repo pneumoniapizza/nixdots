@@ -2,7 +2,7 @@
 --
 --   [ MODE ][ branch ] filename [+]            enc :: ff :: ft [ 42% ][ 5:4 ]
 --
--- Mode blocks (a/z) use the theme's mode colours, branch/progress (b/y) sit on a
+-- Mode blocks (a/z) use the colorscheme's mode colours, branch/progress (b/y) sit on a
 -- tinted segment, filename and file info (c/x) sit on the plain bar.
 local M = {}
 
@@ -31,7 +31,7 @@ local function setup_hl()
   vim.api.nvim_set_hl(0, "StlSeg", { fg = get("Normal", "fg"), bg = seg })
   vim.api.nvim_set_hl(0, "StlWarnBar", { fg = get("StlWarn", "fg"), bg = get("StlBody", "bg"), bold = true })
   for _, m in ipairs(MODES) do
-    -- keep the theme's mode block, just make sure it's bold
+    -- keep the colorscheme's mode block, just make sure it's bold
     vim.api.nvim_set_hl(0, "StlMode" .. m, {
       fg = get("StlMode" .. m, "fg"),
       bg = get("StlMode" .. m, "bg"),

@@ -1,0 +1,85 @@
+@import "colors.css";
+
+* {
+  font-family: "MonaspiceNe Nerd Font", monospace;
+  font-size: 14px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* floating, slightly translucent bar */
+window#waybar {
+  background: alpha(@bg, 0.92);
+  color: @fg;
+  border: 1px solid @primary; /* same as the niri focus ring */
+  border-radius: 12px;
+}
+
+/* breathing room at both ends of the bar */
+.modules-left { padding-left: 18px; }
+.modules-right { padding-right: 18px; }
+
+#workspaces,
+#clock,
+#pulseaudio,
+#network,
+#battery,
+#tray {
+  background: transparent;
+  color: @fg;
+  padding: 0 12px;
+  margin: 0;
+}
+
+/* ---------- workspaces: numbers, underline on the active one ---------- */
+
+#workspaces { padding: 0; }
+
+#workspaces button {
+  background: transparent;
+  color: @outline;
+  padding: 0 12px;
+  margin: 0 4px 0 0;
+  border-bottom: 2px solid transparent;
+}
+
+#workspaces button:hover { color: @fg; background: transparent; }
+
+#workspaces button.active {
+  color: @primary;
+  border-bottom: 2px solid @primary;
+}
+
+#workspaces button.urgent { color: @error; border-bottom-color: @error; }
+
+/* ---------- text ---------- */
+
+#clock { font-weight: bold; }
+
+#pulseaudio.muted { color: @outline; }
+#network.disconnected { color: @error; }
+#battery.charging,
+#battery.plugged { color: @secondary; }
+#battery.warning:not(.charging) { color: @warning; }
+#battery.critical:not(.charging) { color: @error; }
+
+#pulseaudio:hover,
+#network:hover,
+#battery:hover,
+#clock:hover { color: @primary; }
+
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
+
+tooltip {
+  background: @bg;
+  border: 1px solid @outline-alt;
+  border-radius: 12px;
+}
+
+tooltip label {
+  color: @fg;
+  padding: 4px 6px;
+}

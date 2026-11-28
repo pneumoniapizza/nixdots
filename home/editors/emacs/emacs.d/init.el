@@ -97,10 +97,10 @@
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/")
 (condition-case err
-    (load-theme 'matugen t)
-  (error (message "matugen theme not loaded: %s" (error-message-string err))))
+    (load-theme 'rose-pine t)
+  (error (message "rose-pine theme not loaded: %s" (error-message-string err))))
 
-(set-face-attribute 'fill-column-indicator nil :foreground "#717C7C")
+(set-face-attribute 'fill-column-indicator nil :foreground "#6e6a86")
 
 ;; Use the Nerd Font you already render with. Without this nerd-icons asks for
 ;; "Symbols Nerd Font Mono"; if that isn't installed Emacs hunts for a fallback

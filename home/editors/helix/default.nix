@@ -20,8 +20,9 @@
 
   programs.helix = {
     enable = true;
+    themes.rose-pine = builtins.fromTOML (builtins.readFile ./rose-pine.toml);
     settings = {
-      theme = "matugen";
+      theme = "rose-pine";
       editor = {
         true-color = true;
         color-modes = true;

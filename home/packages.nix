@@ -14,7 +14,6 @@
     mpv
     ani-cli
     woomer
-    matugen
     inputs.vivy.packages.${pkgs.stdenv.hostPlatform.system}.default # github:pneumoniapizza/vivy
 
     # gaming and audio

@@ -20,7 +20,7 @@
   # `wallpaper-picker --restore` re-applies the last pick at login.
   wallpaper-picker = pkgs.writeShellApplication {
     name = "wallpaper-picker";
-    runtimeInputs = [pkgs.fuzzel pkgs.matugen pkgs.findutils pkgs.coreutils pkgs.gnused];
+    runtimeInputs = [pkgs.fuzzel pkgs.findutils pkgs.coreutils pkgs.gnused wall-backdrop];
     text = ''
       dir="''${WALLPAPER_DIR:-$HOME/Pictures/wallpapers}"
       state="''${XDG_STATE_HOME:-$HOME/.local/state}/wallpaper"
@@ -50,7 +50,7 @@
       printf '%s\n' "$img" > "$state"
 
       awww img --transition-type fade --transition-duration 1 "$img"
-      exec matugen image "$img"
+      exec wall-backdrop "$img"
     '';
   };
 in {

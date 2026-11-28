@@ -14,7 +14,7 @@ input {
 }
 
 layout {
-    gaps 15
+    gaps 20
     center-focused-column "never"
     always-center-single-column
     default-column-width
@@ -48,12 +48,33 @@ prefer-no-csd
 screenshot-path "~/Pictures/screenshots/ss_from_%Y-%m-%d %H-%M-%S.png"
 
 animations {
-    off
+    slowdown 1.0
+
+    workspace-switch {
+        spring damping-ratio=0.85 stiffness=700 epsilon=0.0001
+    }
+    horizontal-view-movement {
+        spring damping-ratio=0.9 stiffness=650 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=0.85 stiffness=700 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=0.9 stiffness=700 epsilon=0.0001
+    }
     window-open {
-        spring damping-ratio=0.75 stiffness=800 epsilon=0.0001
+        duration-ms 220
+        curve "ease-out-expo"
     }
     window-close {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+        duration-ms 180
+        curve "ease-out-quad"
+    }
+    overview-open-close {
+        spring damping-ratio=0.9 stiffness=750 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.7 stiffness=900 epsilon=0.0001
     }
 }
 
@@ -72,10 +93,13 @@ window-rule {
     open-floating true
 }
 
-// window-rule {
-//     geometry-corner-radius 18
-//     clip-to-geometry true
-// }
+// small floating terminal for nmtui (waybar network click)
+window-rule {
+    match app-id="^popup$"
+    open-floating true
+    default-column-width { fixed 720; }
+    default-window-height { fixed 460; }
+}
 
 cursor {
     xcursor-theme "Bibata-Original-Classic"
@@ -83,32 +107,39 @@ cursor {
 }
 
 spawn-sh-at-startup "awww-daemon"
-spawn-sh-at-startup "qs"
+spawn-at-startup "waybar"
+spawn-at-startup "dunst"
+spawn-at-startup "swayosd-server"
+spawn-at-startup "batsignal" "-w" "30" "-c" "15"
+spawn-sh-at-startup "swayidle -w before-sleep lock lock lock"
 spawn-at-startup "foot" "--server"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
 binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
-    Mod+R hotkey-overlay-title="Run an Application: quickshell" { spawn-sh "qs ipc call launcher toggle"; }
-    Mod+W hotkey-overlay-title="Pick a Wallpaper" { spawn-sh "qs ipc call wallpaper toggle"; }
-    Mod+V hotkey-overlay-title="Clipboard History" { spawn-sh "qs ipc call clipboard toggle"; }
-    Mod+BackSpace hotkey-overlay-title="Clipboard History" { spawn-sh "qs ipc call power toggle"; }
-    Mod+Period hotkey-overlay-title="Emoji" { spawn-sh "qs ipc call emoji toggle"; }
+    Mod+R hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+W hotkey-overlay-title="Pick a Wallpaper" { spawn "wallpaper-picker"; }
+    Mod+V hotkey-overlay-title="Clipboard History" { spawn "clipboard-menu"; }
+    Mod+BackSpace hotkey-overlay-title="Power Menu" { spawn "power-menu"; }
+    Mod+Period hotkey-overlay-title="Emoji" { spawn "emoji-menu"; }
+    Mod+T hotkey-overlay-title="Timer" { spawn "timer-menu"; }
+    Mod+N hotkey-overlay-title="Last Notification" { spawn-sh "dunstctl history-pop"; }
+    Mod+Ctrl+L hotkey-overlay-title="Lock" { spawn "lock"; }
 
     Mod+B hotkey-overlay-title="Open woomer" { spawn-sh "woomer"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume raise --max-volume 100"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume lower"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "swayosd-client --output-volume mute-toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "swayosd-client --input-volume mute-toggle"; }
 
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightness" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightness" "10%-"; }
 
     Mod+O repeat=false { toggle-overview; }
 

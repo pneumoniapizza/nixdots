@@ -8,7 +8,7 @@
     plugins = {
       inherit
         (pkgs.yaziPlugins)
-        full-border # frame around the panes (square, see initLua)
+        full-border # rounded frame around the panes (see initLua)
         smart-enter # enter dirs / open files with one key
         git # git status marks in the file list
         jump-to-char # f + char to jump
@@ -18,8 +18,10 @@
         ;
     };
 
+    theme = builtins.fromTOML (builtins.readFile ./theme.toml);
+
     initLua = ''
-      require("full-border"):setup { set = "plain" }
+      require("full-border"):setup()
       require("git"):setup()
     '';
 

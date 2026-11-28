@@ -5,8 +5,7 @@
     yt-dlp
   ];
 
-  # config.py is static; the palette comes from matugen as
-  # ~/.config/qutebrowser/colors.json and is reloaded live (:config-source)
+  # rose-pine colors live in config.py
   xdg.configFile."qutebrowser/config.py".source = ./config.py;
 
   # instance lists per frontend; first entry is the default.

@@ -3,6 +3,7 @@
     ./fastfetch
     ./yazi
     ./fish
+    ./starship
     ./foot
     ./tmux
   ];
