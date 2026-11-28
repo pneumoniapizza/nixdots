@@ -3,7 +3,7 @@
 
   xdg.configFile."swayimg/init.lua".text = ''
     swayimg.text.size = 16
-    swayimg.text.font = "MonaspiceNe Nerd Font"
+    swayimg.text.font = "JetBrainsMono Nerd Font"
 
     -- info overlay
     swayimg.text.color = 0xffe0def4

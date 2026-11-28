@@ -74,7 +74,7 @@ in {
     enable = true;
     settings = {
       main = {
-        font = "MonaspiceNe Nerd Font:size=13";
+        font = "JetBrainsMono Nerd Font:size=13";
         # foot server + client: "Terminal=true" desktop entries open in a footclient window
         terminal = "footclient";
         icon-theme = "Papirus-Dark";

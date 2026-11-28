@@ -3,7 +3,7 @@
     enable = true;
 
     options = {
-      font = "MonaspiceNe Nerd Font 10";
+      font = "JetBrainsMono Nerd Font 10";
       guioptions = "s"; # statusbar only, no scrollbars or inputbar clutter
       selection-clipboard = "clipboard";
       adjust-open = "best-fit";

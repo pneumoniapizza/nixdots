@@ -93,7 +93,7 @@
 
 ;;; Appearance --------------------------------------------------------------
 
-(set-face-attribute 'default nil :font "CaskaydiaCove NF" :height 160)
+(set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 160)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/")
 (condition-case err

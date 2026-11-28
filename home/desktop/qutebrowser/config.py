@@ -258,7 +258,7 @@ for _es in _load(FRONTENDS).values():
             config.set("content.canvas_reading", True, _pat)
 
 # ───────────────────────── look ─────────────────────────
-c.fonts.default_family = "MonaspiceNe Nerd Font"
+c.fonts.default_family = "JetBrainsMono Nerd Font"
 c.fonts.default_size = "10pt"
 c.tabs.show = "multiple"
 c.tabs.padding = {"top": 5, "bottom": 5, "left": 10, "right": 10}

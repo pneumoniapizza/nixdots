@@ -7,7 +7,7 @@
       main = {
         shell = "fish";
         title = "foot";
-        font = "MonaspiceNe Nerd Font:size=14";
+        font = "JetBrainsMono Nerd Font:size=14";
         letter-spacing = 0;
         dpi-aware = false;
         pad = "20x20 center";

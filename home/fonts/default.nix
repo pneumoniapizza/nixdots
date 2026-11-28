@@ -4,7 +4,7 @@
 
     defaultFonts = {
       monospace = [
-        "Monaspace Neon"
+        "JetBrainsMono Nerd Font"
         "Symbols Nerd Font Mono"
       ];
 
@@ -15,7 +15,7 @@
   };
 
   home.packages = with pkgs; [
-    nerd-fonts.monaspace # Neon, Argon, Xenon, Radon, Krypton
+    nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
     noto-fonts-color-emoji
     material-symbols
