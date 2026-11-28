@@ -11,7 +11,7 @@
 
 /* floating, slightly translucent bar */
 window#waybar {
-  background: alpha(@bg, 0.92);
+  background: @bg;
   color: @fg;
   border: 2px solid @primary; /* same as the niri focus ring */
   border-radius: 12px;
